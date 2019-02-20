@@ -1,0 +1,172 @@
+/* Pop-up ikkuna valinnoille */
+.valintaIkkuna{
+margin-left: 50%!important;
+margin-top: 30px!important;
+position:absolute;
+background-color:#fbfae8;
+-webkit-box-shadow: 0px 0px 30px 0px rgba(51,51,51,1);
+-moz-box-shadow: 0px 0px 30px 0px rgba(51,51,51,1);
+box-shadow: 0px 0px 30px 0px rgba(51,51,51,1);
+z-index:1111111111111;
+color: #615f53;
+}
+// Valitse lauta-valinta
+.lautaValinta > *{
+margin-top:100px;
+cursor: pointer;
+}
+/*V�rin valinta*/
+.brown,.green{
+cursor: pointer;
+margin: 0 25px 10px 30px;
+float: left;
+}
+.brown img,.green img{
+height: 120px;
+}
+
+/*Muodon valinnat*/
+.squareDeckC,.lDeckC,.tDeckC{
+cursor: pointer;
+vertical-align: middle;
+float: left;
+line-height: 100px;
+margin: 25px 25px 100px 25px;
+}
+
+/*Laudan leveys ja rako-valinnat*/
+.laudanLeveys, .runkoratkaisu, .rako, .laudanpituus, .vari{
+font-size:14pt;
+display: table;
+margin: 0 30px 0 30px;
+width: 380px;
+text-transform: uppercase;
+padding: 5px;
+}
+.vari {
+    margin: 20px 0 -80px 30px;
+}
+.runkoratkaisu h2 {
+    font-size:16pt;
+}
+
+.runkoratkaisu {
+    margin-bottom: 30px;
+}
+
+.kayttoohje {
+    height: 280px;
+    width: 500px;
+}
+
+.ohjeteksti {
+    margin-top: 100px;
+    padding: 30px;
+}
+
+.valintaOtsikko{
+    float: left;
+}
+/*Select-boksit*/
+select{
+display: inline;
+color:#615f53;
+padding:5px;
+font-size:14pt;
+cursor: pointer;
+float: right;
+}
+
+
+.runkoratkaisu input[type="radio"] {
+   margin: 7px;
+   cursor: pointer;
+}
+
+ /*Sulje-nappi*/
+.sulje {
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    height: 40px;
+    width: 40px;
+    float: right;
+    text-align: center;
+    vertical-align: middle;
+    margin: 5px 3px 0 0;
+    cursor: pointer;
+}
+
+.hintatiedot input[type="number"] {
+    vertical-align: top;
+  border-radius: 5px;
+  width: 40px;
+  float: right;
+  margin: -45px 20px 0 0;
+  color: #000;
+}
+
+.hintatiedot {
+    margin: 30px;
+}
+
+.hintaotsikko {
+    font-size: 2.3vh;
+    color: #000;
+}
+
+.tiedot2 h2{
+    margin: 0 10px 20px 0;
+font-size:12pt;
+color: #000;
+}
+
+.hintatiedot {
+    width: 400px;
+}
+
+.hinnat{
+    cursor:pointer;
+    margin-left: -30px;
+}
+
+.ohje {
+    cursor: pointer;
+}
+
+.hintatotal {
+    margin-bottom: 70px;
+}
+
+
+@media (max-width: 1200px) {
+.valintaIkkuna{
+margin-left: 20%!important;
+}
+
+.tiedot2 h2{
+    margin: 0 10px 5px 0;
+font-size:12pt;
+color: #000;
+}
+.hintatiedot input[type="number"] {
+    vertical-align: top;
+  border-radius: 5px;
+  width: 40px;
+  float: right;
+  margin: -25px 0 20px 0;
+  color: #000;
+}
+
+/*Muodon valinnat*/
+.squareDeckC,.lDeckC,.tDeckC{
+line-height: 100px;
+margin: 15px 15px 70px 15px;
+}
+
+.sulje {
+    right:10px;
+    bottom:10px;
+    margin: 5px 3px 0 0;
+}
+}
