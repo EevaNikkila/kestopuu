@@ -1,6 +1,4 @@
 <html>
-
-<!-- Mirrored from niisku.lamk.fi/~deckplanner/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Feb 2019 18:54:45 GMT -->
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,10 +16,6 @@
         <!-- 26042018 MW ylla olevasta rivista poistettu kommentti ja lisatty se allaolevaan seka jspdf.min.js paivitetty ./js hakemistoon -->
         <!-- <script src="//mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script> -->
         <script type="text/javascript" src="js/html2canvas.min.js"></script>
-
-
-
-
         <link rel="stylesheet" href="../../code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="../../code.jquery.com/jquery-1.10.2.js"></script>
         <script src="../../code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -47,7 +41,7 @@
                             </div>
                         </div>
                         <div class="toinen">
-                            <div class="valikkootsikko muotovalintaotsikko valinta muoto">
+                            <div class="valikkootsikko muotovalintaotsikko valinta muoto" data-toggle="modal" data-target="#muotoModal">
                                 <img src="kuvat/logo_muoto2.svg" /><h1>Valitse muoto</h1>
                             </div>
                         </div>
@@ -81,7 +75,7 @@
                             </div>
                         </div>
                         <div class="neljas">
-                            <div class="valikkootsikko hintavalintaotsikko valinta hinnat"  data-toggle="modal" data-target="#hintaModal">
+                            <div class="valikkootsikko hintavalintaotsikko valinta hinnat" data-toggle="modal" data-target="#hintaModal">
                                 <img src="kuvat/logo_hinta2.svg" />
                                 <h1>Syötä hinnat</h1></div>
                         </div>
@@ -92,10 +86,7 @@
 
                         </div>
                         <div class="kuudes">
-
-                            &copy; Kestopuuteollisuus ry. <br/> <span class="valinta ohje">Käyttöohje</span>
-
-
+                          <span class="valinta ohje"  data-toggle="modal" data-target="#ohjeModal">Käyttöohje</span>
                         </div>
                     </div>
                     <div class="piirtoAlusta col-md-8  col-sm-8"></div>
@@ -105,40 +96,59 @@
                 </div>
                 <div id="bottomBar"></div>
                 <div id="hintaModal" style=" z-index: 11111111111;" class="modal fade" role="dialog">
-                  <div class="modal-dialog" style="width:70%;background: white; ">
+                  <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h2 style="display:inline;">Hinnat</h2><a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a>
 
                       </div>
-                      <div class="modal-body">
-                        <div class="tiedot2 lautahinta">
-                          <h2>Kansilaudan metrihinta</h2>
-                          <input onchange="cook(this)" type="number" min="0" id="lautahinta" />
+                      <div class="modal-body hintatiedot">
+                        <div class="tiedot2 row lautahinta">
+                          <div class="col-xs-6">
+                            Kansilaudan metrihinta
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" type="number" min="0" id="lautahinta" />
+                          </div>
                         </div>
-                        <div class="tiedot2 runkohinta">
-                          <h2>Rungon metrihinta
-                            <span id="info_kuva7"><img src="kuvat/info.gif" alt="info" /></span>
-                            <span id="info_teksti7" class="info">Valitse runkoon Kestopuu A-luokka 48 x 123 mm tai 48 x 148 mm lauta</span>
-                          </h2>
-
-                          <input onchange="cook(this)" type="number" min="0" id="runkohinta" />
+                        <div class="tiedot2 row runkohinta">
+                          <div class="col-xs-6">
+                            Rungon metrihinta
+                              <span id="info_kuva7"><img src="kuvat/info.gif" alt="info" /></span>
+                              <span id="info_teksti7" class="info">Valitse runkoon Kestopuu A-luokka 48 x 123 mm tai 48 x 148 mm lauta</span>
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" type="number" min="0" id="runkohinta" />
+                          </div>
                         </div>
-                        <div class="tiedot2 palkkikenkahinta">
-                          <h2>Palkkikenkien hinta</h2>
-                          <input onchange="cook(this)" type="number" min="0" id="palkkikenkahinta" />
+                        <div class="tiedot2 palkkikenkahinta row">
+                          <div class="col-xs-6">
+                            Palkkikenkien hinta
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" type="number" min="0" id="palkkikenkahinta" />
+                          </div>
                         </div>
-                        <div class="tiedot2 ruuvihinta">
-                          <h2>Kansilautaruuvien yhteishinta<span id="info_kuva5"><img src="kuvat/info.gif" alt="info" /></span>
-                          <span id="info_teksti5" class="info">Sy&ouml;t&auml; tarvittavien rst-ruuvipakettien yhteishinta</span></h2>
-                          <input onchange="cook(this)" step="1" min="0" type="number" id="plkiinnikehinta" />
+                        <div class="tiedot2 ruuvihinta row">
+                          <div class="col-xs-6">
+                            Kansilautaruuvien yhteishinta<span id="info_kuva5"><img src="kuvat/info.gif" alt="info" /></span>
+                            <span id="info_teksti5" class="info">Sy&ouml;t&auml; tarvittavien rst-ruuvipakettien yhteishinta</span>
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" step="1" min="0" type="number" id="plkiinnikehinta" />
+                          </div>
                         </div>
-                        <div class="tiedot2 ruuvihinta">
-                          <h2>Runkorakenteen ruuvien yhteishinta</h2>
-                          <input onchange="cook(this)" step="1" min="0" type="number" id="pkkiinnikehinta" />
+                        <div class="tiedot2 ruuvihinta row">
+                          <div class="col-xs-6">
+                            Runkorakenteen ruuvien yhteishinta
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" step="1" min="0" type="number" id="pkkiinnikehinta" />
+                          </div>
                         </div>
-                        <h2 class="hintaotsikko">Kokonaishinnat:</h2>
-                        <div class="tiedot lautahintatotal"><h2>Laudat</h2><h2><span id="lautahintatulos"></span></h2></div>
+                        <h2>Kokonaishinnat:</h2>
+                        <div class="tiedot lautahintatotal"><h2>Kansilaudat</h2><h2><span id="lautahintatulos"></span></h2></div>
+                        <div class="tiedot lautaneliohintatotal"><h2>Kansilaudan neliöhinta</h2><h2><span id="lautahintaneliotulos"></span></h2></div>
                         <div class="tiedot runkohintatotal"><h2>Runkolaudat</h2><h2><span id="runkohintatulos"></span></h2></div>
                         <div class="tiedot palkkikenkahintatotal"><h2>Palkkikeng&auml;t</h2><h2><span id="palkkikenkahintatulos"></span></h2></div>
                         <div class="tiedot ruuvihintatotal"><h2>Kansilaudan ruuvit</h2><h2><span id="plkiinnikehintatulos"></span></h2></div>
@@ -149,15 +159,47 @@
                     </div>
                   </div>
                 </div>
+                <div id="ohjeModal" style=" z-index: 11111111111;" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 style="display:inline;">K&auml;ytt&ouml;ohje</h2>
+                        <a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a>
+                      </div>
+                      <div class="modal-body">
+                        <p>Voit muuttaa terassin kokoa vet&auml;m&auml;ll&auml; terassia reunoista tai sy&ouml;tt&auml;m&auml;ll&auml; leveyden ja pituuden sy&ouml;tt&ouml;laatikoihin.
+                         Valitse lauta ja runko-valikosta voit valita laudan v&auml;rin ja leveyden, lautojen v&auml;liin j&auml;&auml;v&auml;n raon, laudan pituuden sek&auml; runkoratkaisun.
+                         Perustusvaraiseen runkoon tulee pystytolpat, maavaraiseen ei. Valitse terassin muoto Valitse muoto-valikosta. Tarjolla on kolme eri muotoa.
+                        Sy&ouml;t&auml; hinnat-valikosta voit laskea, kuinka paljon terassin hinnaksi tulee.</p>
+                        <p>&copy; Kestopuuteollisuus ry. </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="muotoModal" style=" z-index: 11111111111;" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 style="display:inline;">Valitse muoto</h2>
+                        <a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a>
+                      </div>
+                      <div class="modal-body">
+                          <div class="SquareDeckC"></div>
+                          <div class="lDeckC"></div>
+                          <div class="tDeckC"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div id="myModal" class="modal fade" role="dialog" style=" z-index: 1111111111111; ">
                     <div class="modal-dialog" style="width:70%;background: white; height: 1300px ">
 
                         <!-- Modal content-->
                         <div class="modal-content" >
                             <div class="modal-header" >
-                                <a href="javascript:decplanner_pdf()" style="font-size: 20px; color: #8da05e; font-weight: bold">Tulosta</a>
+                                <a href="javascript:decplanner_pdf()" style="font-size: 20px; color: #8da05e; font-weight: bold">Tallenna (PDF)</a>
 
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a>
 
                             </div>
                             <div class="modal-body" style=" background: white; height: 1300px">
@@ -228,11 +270,12 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="footer">Voidaksemme tarjota paremman käyttökokemuksen,
+                    käytämme tässä verkkopalvelussa evästeitä. Jatkamalla hyväksyt evästeiden käytön.
+                    <button id="closeCookie" class="close" style="color: black; opacity:.8" >&times;</button></div>
             </div>
-            <div class="footer">Voidaksemme tarjota paremman käyttökokemuksen,
-                käytämme tässä verkkopalvelussa evästeitä. Jatkamalla hyväksyt evästeiden käytön.
-                <button id="closeCookie" class="close" style="color: black; opacity:.8" >&times;</button></div>
-        </div>
+            </div>
         <script type="text/javascript">
 
             function decplanner_pdf() {
@@ -250,5 +293,4 @@
         </script>
     </body>
 
-<!-- Mirrored from niisku.lamk.fi/~deckplanner/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Feb 2019 18:54:45 GMT -->
 </html>

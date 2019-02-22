@@ -20,9 +20,27 @@ height: 120px;
 .squareDeckC,.lDeckC,.tDeckC{
 cursor: pointer;
 vertical-align: middle;
-float: left;
-line-height: 100px;
-margin: 25px 25px 100px 25px;
+display: inline-block;
+margin: 15px;
+padding: 2px;
+height: 129px;
+width: 129px;
+}
+
+.squareDeckC {
+  background: url(../kuvat/muoto_nelio.svg);
+}
+
+.lDeckC {
+  background: url(../kuvat/muoto_l.svg);
+}
+
+.tDeckC {
+  background: url(../kuvat/muoto_t.svg);
+}
+
+.squareDeckC img,.lDeckC img,.tDeckC img{
+height: 120px;
 }
 
 /*Laudan leveys ja rako-valinnat*/
@@ -86,31 +104,26 @@ float: right;
 }
 
 .hintatiedot input[type="number"] {
-    vertical-align: top;
   border-radius: 5px;
-  width: 40px;
-  float: right;
-  margin: -45px 20px 0 0;
+  width: 50px;
   color: #000;
 }
 
+.lautaneliohintatotal {
+  margin-left: 20px;
+}
+
+.tiedot2 {
+  margin-bottom: 15px;
+}
+
 .hintatiedot {
-    margin: 30px;
+  font-size: 16px;
 }
 
 .hintaotsikko {
     font-size: 2.3vh;
     color: #000;
-}
-
-.tiedot2 h2{
-    margin: 0 10px 20px 0;
-font-size:12pt;
-color: #000;
-}
-
-.hintatiedot {
-    width: 400px;
 }
 
 .hinnat{
@@ -127,23 +140,6 @@ color: #000;
 
 
 @media (max-width: 1200px) {
-.valintaIkkuna{
-margin-left: 20%!important;
-}
-
-.tiedot2 h2{
-    margin: 0 10px 5px 0;
-font-size:12pt;
-color: #000;
-}
-.hintatiedot input[type="number"] {
-    vertical-align: top;
-  border-radius: 5px;
-  width: 40px;
-  float: right;
-  margin: -25px 0 20px 0;
-  color: #000;
-}
 
 /*Muodon valinnat*/
 .squareDeckC,.lDeckC,.tDeckC{

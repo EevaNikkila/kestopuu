@@ -61,6 +61,7 @@ body, html{
 .footer {
     padding: 15px;
     text-align: center;
+    background: #FFF;
 }
 
 /* VALIKKO */
@@ -135,6 +136,12 @@ body, html{
     margin: 5px 15px 0 5px;
 }
 
+.shadow {
+   -moz-box-shadow:    inset 0 0 15px #191926;
+   -webkit-box-shadow: inset 0 0 15px #191926;
+   box-shadow:         inset 0 0 15px #191926;
+}
+
 
 /* MUUT */
 #tulostustaulukko tr {
@@ -178,6 +185,9 @@ body, html{
 #info_teksti2, #info_teksti3, #info_teksti4, #info_teksti5, #info_teksti7
 {
     text-transform: none;
+}
+#info_teksti7, #info_teksti5 {
+  width: 300px;
 }
 #info_kuva2, #info_kuva3, #info_kuva4, #info_kuva5, #info_kuva7
 {
@@ -270,14 +280,6 @@ body, html{
     }
     .englanti{
         margin-right: 0;
-    }
-
-    .hintatiedot input[type="number"] {
-        vertical-align: top;
-        border-radius: 5px;
-        width: 40px;
-        float: right;
-        color: #000;
     }
 
     .mobile {

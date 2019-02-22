@@ -1215,6 +1215,7 @@ function laskeTarvikkeet() {
     $('#runkohintatulos').html(runkohinta.toFixed(1) + " &euro;");
     $('#kiinnikehintatulos').html((kiinnikehinta).toFixed(1) + " &euro;");
     $('#lautahintatulos').html(lautahinta.toFixed(1) + " &euro;");
+    $('#lautahintaneliotulos').html((lautahinta/pinta_ala).toFixed(1) + " &euro;");
     $('#palkkikenkahintatulos').html(palkkikenkahinta.toFixed(1) + " &euro;");
     $('#pkkiinnikehintatulos').html(runkokiinnikehinta.toFixed(1) + " &euro;");
     $('#plkiinnikehintatulos').html(plkiinnikehinta.toFixed(1) + " &euro;");
@@ -1645,9 +1646,6 @@ function ValintaIkkunaNakyma(valinta) {
     if (valinta == 'hinta') {
 
         $('.valintaIkkuna').show();
-       console.log("test");
-
-
         // Haetaan tiedot cookieista, jos niitä on
         if (document.cookie !== 0) {
 
@@ -1681,45 +1679,15 @@ function ValintaIkkunaNakyma(valinta) {
             laskeTarvikkeet();
         });
 
-        // Piilotettavat infotekstit
-        $('#info_kuva5').hover(function() {
-            $('#info_teksti5').toggle();
-        });
 
-        $('#info_kuva7').hover(function() {
-            $('#info_teksti7').toggle();
-        });
 
         //Sulje-nappi
         $('.sulje').on('click', function() {
             $('.valintaIkkuna').hide();
         });
-    }   /* Ohje-valinta */
-    else if (valinta == 'ohje') {
-        $('.valintaIkkuna').show();
-        // HTML-osuus
-        $('.valintaIkkuna').html('<div class="sulje"><img src="kuvat/logo_exit.svg" height="99%" alt="sulje" /></div>\n\
-        <div class="kayttoohje"><h2 style="margin: 20px 0 -20% 30px">K&auml;ytt&ouml;ohje</h2><div class="ohjeteksti">\n\
-        <p>Voit muuttaa terassin kokoa vet&auml;m&auml;ll&auml; terassia reunoista tai sy&ouml;tt&auml;m&auml;ll&auml; leveyden ja pituuden sy&ouml;tt&ouml;laatikoihin.\n\
-         Valitse lauta ja runko-valikosta voit valita laudan v&auml;rin ja leveyden, lautojen v&auml;liin j&auml;&auml;v&auml;n raon, laudan pituuden sek&auml; runkoratkaisun.\n\
-         Perustusvaraiseen runkoon tulee pystytolpat, maavaraiseen ei.\n\
-         Valitse terassin muoto Valitse muoto-valikosta. Tarjolla on kolme eri muotoa.\n\
-        Sy&ouml;t&auml; hinnat-valikosta voit laskea, kuinka paljon terassin hinnaksi tulee.</p></div></div>');
-
-        // Sulje-nappi
-        $('.sulje').on('click', function() {
-            $('.valintaIkkuna').hide();
-        });
-
     }
     /* Muoto-valinta */
     else if (valinta == 'muoto') {
-        $('.valintaIkkuna').show();
-        // HTML-osuus, muotojen kuvat
-        $('.valintaIkkuna').html('<div class="sulje"><img src="kuvat/logo_exit.svg" height="99%" alt="sulje" /></div>\n\
-        <div class="terassinMuotoValinta"><h2 style="margin: 20px 0 -20% 30px">Valitse muoto</h2><div class="SquareDeckC"><img src="kuvat/muoto_nelio.svg" /></div>\n\
-        <div class="lDeckC"><img src="kuvat/muoto_l.svg" /></div>\n\
-        <div class="tDeckC"><img src="kuvat/muoto_t.svg" /></div></div>');
         $('.terassinMuotoValinta').children().css({'height': wH * 0.7 * 0.24});
         $('.angleDeckCImage1').css({'width': Math.ceil(wH * 0.7 * 0.6 * 0.24 * 0.5)});
         $('.angleDeckCImage2').css({'border-width': Math.ceil(wH * 0.7 * 0.6 * 0.24 * 0.5) + ' 0 ' + ' 0 ' + Math.ceil(wH * 0.7 * 0.6 * 0.24 * 0.5)});
@@ -1729,6 +1697,9 @@ function ValintaIkkunaNakyma(valinta) {
         // Kun neliönmuotoinen terassi valitaan...
         $('.SquareDeckC').on('click', function() {
             $('.valintaIkkuna').hide();
+            $('.SquareDeckC').addClass('shadow');
+            $('.tDeckC').removeClass('shadow');
+            $('.lDeckC').removeClass('shadow');
             squareDeck();
             // poistetaan koolaus_aktiivinen, jotta aloitetaan laudoitus nÃ¤kymÃ¤stÃ¤ (luultavasti haluttava kÃ¤yttÃ¤ytyminen)
             koolaus_aktiivinen = false;
@@ -1742,6 +1713,9 @@ function ValintaIkkunaNakyma(valinta) {
         // Kun L:n muotoinen terassi valitaan...
         $('.lDeckC').on('click', function() {
             $('.valintaIkkuna').hide();
+            $('.SquareDeckC').removeClass('shadow');
+            $('.tDeckC').removeClass('shadow');
+            $('.lDeckC').addClass('shadow');
             lDeck();
 
             koolaus_aktiivinen = false;
@@ -1755,6 +1729,9 @@ function ValintaIkkunaNakyma(valinta) {
         // Kun T:n muotoinen terassi valitaan...
         $('.tDeckC').on('click', function() {
             $('.valintaIkkuna').hide();
+            $('.tDeckC').addClass('shadow');
+            $('.SquareDeckC').removeClass('shadow');
+            $('.lDeckC').removeClass('shadow');
             tDeck();
 
             koolaus_aktiivinen = false;
@@ -1786,9 +1763,9 @@ function ValintaIkkunaNakyma(valinta) {
 
             // Lauta-valinnan HTML-osuus
         $('.valintaIkkuna').html('<div id="lautaModal" style=" z-index: 11111111111;" class="modal fade" role="dialog">\n\
-        <div class="modal-dialog" style="width:70%;background: white; ">\n\
-              <div class="modal-content"><div class="modal-header"><a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a></div>\n\
-<div class="modal-body"><div class="lautaValinta"><h2 style="margin: 20px 0 -100px 30px">Lauta ja runko</h2><div class="vari"><strong>V&auml;ri</strong></div><div class="brown" onclick="cook(' + brown + ')" value="brown"><img src="kuvat/lauta_r.svg" /></div>\n\
+        <div class="modal-dialog">\n\
+              <div class="modal-content"><div class="modal-header"><h2 style="display:inline;">Lauta ja runko</h2><a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a></div>\n\
+<div class="modal-body"><div class="lautaValinta"><div class="vari"><strong>V&auml;ri</strong></div><div class="brown" onclick="cook(' + brown + ')" value="brown"><img src="kuvat/lauta_r.svg" /></div>\n\
 <div class="green" onclick="cook(' + green + ')"><img src="kuvat/lauta_v.svg" /></div></div>\n\
 <div class="laudanLeveys"><span class="valintaOtsikko laudanLeveysValinta">Laudan leveys</span><div id="info_kuva3"><img src="kuvat/info.gif" alt="info" /></div>\n\
 <select onchange="cook(this)" id="leveys" name="mitta"><option value="0.095">95 mm</option><option value="0.120">120 mm</option><option value="0.145">145 mm</option><option value="0.220">220 mm</option></select>\n\
@@ -1912,9 +1889,6 @@ $(function() {
     $('.muoto').on('click', function() {
         ValintaIkkunaNakyma('muoto');
     });
-    $('.ohje').on('click', function() {
-        ValintaIkkunaNakyma('ohje');
-    });
     $('.lauta').on('click', function() {
         ValintaIkkunaNakyma('lauta');
     });
@@ -1926,6 +1900,15 @@ $(function() {
     });
     $('.suomi').on('click', function() {
         inFinnish();
+    });
+
+    // Piilotettavat infotekstit
+    $('#info_kuva5').hover(function() {
+        $('#info_teksti5').toggle();
+    });
+
+    $('#info_kuva7').hover(function() {
+        $('#info_teksti7').toggle();
     });
 
     $(".tarvikkeet").click(function () {
