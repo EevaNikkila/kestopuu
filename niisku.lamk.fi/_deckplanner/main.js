@@ -1638,7 +1638,6 @@ function ValintaIkkunaNakyma(valinta) {
     var wW = window.innerWidth;
     var wH = window.innerHeight;
     if (document.documentElement.clientWidth < 1180) {
-    $(".tarviketiedot").css({"display": "none"});
 }
     /* Omat hinnat-valinta
      * Kun omat hinnat- nappia painetaan, avautuu valintaikkuna
@@ -1902,6 +1901,12 @@ $(function() {
         inFinnish();
     });
 
+    $('.openmenu').on('click', function() {
+        $('.valikko').toggle();
+        $('#content').css('width','1175px');
+        $('#topBar').css('width','1175px');
+    });
+
     // Piilotettavat infotekstit
     $('#info_kuva5').hover(function() {
         $('#info_teksti5').toggle();
@@ -1911,15 +1916,6 @@ $(function() {
         $('#info_teksti7').toggle();
     });
 
-    $(".tarvikkeet").click(function () {
-        if (document.documentElement.clientWidth < 1180) {
-            $('.valintaIkkuna').hide();
-            $(".tarviketiedot").css({"display": "block", "padding": "20px", "position": "absolute", "margin-left": "20%", "margin-top": "90px",
-                "z-index": "1111111111111", "background": "#fbfae8", "-webkit-box-shadow": "0px 0px 30px 0px rgba(51,51,51,1)",
-"-moz-box-shadow": "0px 0px 30px 0px rgba(51,51,51,1)",
-"box-shadow": "0px 0px 30px 0px rgba(51,51,51,1)"});
-        }
-        });
 
     // Infoboksit
     $('#info_kuva').hover(function() {
@@ -1945,7 +1941,5 @@ $(function() {
         $('.koolaus_info').css('display','none');
     });
 
-$('.mobile').on('click', function() {
-        $('.tarviketiedot').hide();
-    });
+
 });
