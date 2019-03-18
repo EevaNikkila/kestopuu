@@ -5,6 +5,8 @@ V�rit:
 Vaaleanvihre�: #d0d9be
 Tummanvihre�: #8da05e
 Vaaleankeltainen: #fbfae8
+Lautaruskea: #623F26
+Lautavihreä: #7a8972
 */
 
 
@@ -13,14 +15,14 @@ body, html{
     width:100%;
     height:100%;
     margin:0;
-    font-family:'Oxygen';
+    font-family: Arial, 'Oxygen';
 }
 
 #wrapper{
     width:100%;
     height:100%;
     overflow: auto;
-    background-image: url("kuvat/background.png");
+    background-image: url("kuvat/tausta.jpg");
     background-size: 100% 100%;
 }
 
@@ -37,6 +39,12 @@ body, html{
     width: 100%;
 }
 
+#myModal .modal-dialog {
+  width:70%;
+  background-color: #FFF;
+
+}
+
 .logo{
     display:inline-block;
     margin: 22px 0 0 10%;
@@ -45,7 +53,7 @@ body, html{
 #content {
     display:block;
     color:white;
-    font-family: Oxygen;
+    font-family: Arial;
 }
 
 #bottomBar {
@@ -105,6 +113,10 @@ body, html{
     padding: 15px;
     margin-top: -10px;
     color: #000;
+}
+
+.clear {
+  clear:both;
 }
 
 .ensimmainen h1, .toinen h1, .kolmas h1, .neljas h1, .viides h1{
@@ -184,6 +196,7 @@ body, html{
 #info_teksti2, #info_teksti3, #info_teksti4, #info_teksti5, #info_teksti7
 {
     text-transform: none;
+    margin-top: 3px;
 }
 #info_teksti7, #info_teksti5 {
   width: 300px;
@@ -299,6 +312,7 @@ body, html{
 }*/
 
 @media (max-width: 1175px) and (min-width: 1050px) {
+
   .valikko {
     padding-left: 0;
     left: 0;
@@ -322,6 +336,12 @@ body, html{
 }
 
 @media (max-width: 1115px) {
+
+
+    #myModal .modal-dialog {
+      width:90%;
+    }
+
   .menu_open {
     display: block;
   }

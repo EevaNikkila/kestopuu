@@ -45,17 +45,17 @@ height: 120px;
 
 /*Laudan leveys ja rako-valinnat*/
 .laudanLeveys, .runkoratkaisu, .rako, .laudanpituus, .vari{
-font-size:14pt;
-display: table;
-margin: 0 30px 0 30px;
-width: 380px;
-text-transform: uppercase;
-padding: 5px;
+  font-size:14pt;
+  display: table;
+  margin: 0 30px 0 30px;
+  padding: 5px;
 }
 .vari {
-    margin: 20px 0 -80px 30px;
+  text-transform: uppercase;
+  margin: 20px 0 -80px 30px;
 }
 .runkoratkaisu h2 {
+    text-transform: uppercase;
     font-size:16pt;
 }
 
@@ -73,9 +73,53 @@ padding: 5px;
     padding: 30px;
 }
 
-.valintaOtsikko{
-    float: left;
+
+#lautaModal .modal-dialog {
+  width: 800px;
+  margin-right: 40px;
 }
+
+.mitta {
+  border-bottom: 5px solid #623F26;
+  margin: 10px auto;
+}
+
+#mitta_95 {
+  width: 65px;
+}
+
+#mitta_120 {
+  width: 90px;
+}
+
+#mitta_145 {
+  width: 115px;
+}
+
+#mitta_198 {
+  width: 168px;
+}
+
+
+/* Laudan valinta */
+.lautavalintaboksi {
+  cursor: pointer;
+  margin: 0 10px 10px 10px;
+  text-align: center;
+  display: inline-block;
+}
+.lautavalintaboksi img {
+  height: 120px;
+  display: block;
+  max-width: 140px;
+}
+
+.valittu {
+  border: thick solid #623F26;
+  margin: 6px;
+}
+
+
 /*Select-boksit*/
 select{
 display: inline;
