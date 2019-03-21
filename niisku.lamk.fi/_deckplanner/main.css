@@ -18,6 +18,14 @@ body, html{
     font-family: 'Trebuchet MS', Arial, 'Oxygen';
 }
 
+a {
+  color: #8da05e;
+}
+
+a:hover {
+  color: #5F873F;
+}
+
 #wrapper{
     width:100%;
     height:100%;
@@ -47,7 +55,7 @@ body, html{
 
 .logo{
     display:inline;
-    margin: 22px 0 0 10%;
+    margin: 22px 0 0 11%;
 }
 
 .logo img {
@@ -78,6 +86,7 @@ body, html{
     text-align: center;
     background: #FFF;
     position: absolute;
+    z-index: 1111111111111;
     width: 100%;
     bottom: 0;
 }
@@ -166,7 +175,7 @@ body, html{
 }
 .tiedot h2{
     display:inline-block;
-    margin:0 10px 10px 0;
+    margin:0 5px 10px 0;
     font-size:11pt;
     color: #000;
 }
@@ -206,11 +215,19 @@ body, html{
   height: auto;
   background-color: #d0d9be;
   color: #000;
-  border:none;
+  border: 1px solid #8da05e;
 }
 
 .dismiss-link {
   margin-top: 10px;
+  background-color: #8da05e;
+  padding: 5px 15px;
+  border: 1px solid #8da05e;
+  border-radius: 30px;
+  color: #fff;
+  -webkit-box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
 }
 
 .piirtoAlusta{
@@ -289,6 +306,10 @@ body, html{
   }
   .piirtoalusta #left{
       left: -70px;
+  }
+  .logo{
+      display:inline;
+      margin: 22px 0 0 5%;
   }
 }
 
@@ -448,12 +469,13 @@ body, html{
   }
   .logo {
     margin: 0;
+    vertical-align: super;
   }
   .logo img {
     margin-top: -20px;
   }
   .hmp-palkki {
-    border-top: 5px solid #8da05e;
+    border: 3px solid #8da05e;
     border-radius: 40px;
     width: 35px;
     margin-bottom: 5px;

@@ -42,14 +42,15 @@ height: 120px;
 .laudanLeveys, .runkoratkaisu, .rako, .laudanpituus, .vari {
   font-size:14pt;
   display: table;
-  margin: 0 30px 0 30px;
+  margin: 10px 0 10px 10px;
   padding: 5px;
 }
 .lautaValinta h2 {
     text-transform: uppercase;
     font-size:14pt;
-    display: inline;
+    display: inline-block;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .runkoratkaisu {
@@ -68,23 +69,26 @@ height: 120px;
 
 
 #lautaModal .modal-dialog {
-  width: 800px;
+  width: 850px;
   margin-left: 30%;
 }
 
 .mitta {
-  border-bottom: 5px solid #623F26;
+  border-bottom: 12px solid #623F26;
   margin: 10px auto;
 }
 
 #mitta_1 {
   width: 5px;
+  border-width: 5px;
 }
 #mitta_3 {
   width: 15px;
+  border-width: 5px;
 }
 #mitta_5 {
   width: 25px;
+  border-width: 5px;
 }
 
 #mitta_39 {
@@ -119,6 +123,10 @@ height: 120px;
   width: 115px;
 }
 
+#mitta_170 {
+  width: 140px;
+}
+
 #mitta_198 {
   width: 168px;
 }
@@ -132,7 +140,7 @@ height: 120px;
 .brown,
 .green {
   cursor: pointer;
-  margin: 10px 10px 10px 0;
+  margin: 5px 5px 5px 0;
   text-align: center;
   display: inline-block;
   -webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
@@ -146,12 +154,19 @@ height: 120px;
   height: 100px;
   display: block;
   max-width: 130px;
+  margin:auto;
 }
 
 .runkovalintaboksi {
-  max-width: 135px;
+  max-width: 185px;
   vertical-align: top;
 }
+
+.hinnat_info {
+  margin-bottom: 20px;
+}
+
+
 
 .valittu {
   box-shadow: 0 0 0 4pt #623F26;
@@ -238,7 +253,7 @@ margin: 15px 15px 70px 15px;
 }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1200px) {
   #lautaModal .modal-dialog {
     margin-left: 1%;
   }
@@ -260,7 +275,7 @@ margin: 15px 15px 70px 15px;
   }
 }
 
-@media (min-width: 1150px) {
+@media (min-width: 1200px) {
   #lautaModal .modal-dialog {
     margin-left: 30%;
   }
