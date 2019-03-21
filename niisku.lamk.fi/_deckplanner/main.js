@@ -176,7 +176,7 @@ function squareDeck() {
 
     aktiivinen = 's';
     $(paper).empty();
-    $(paper).append('<div class="squareDeck deck"><div class="box1 box"><input id="left" onchange="inputHeight(this)"></input><input id="top" onchange="inputWidth(this)"></input><input id="right" onchange="inputHeight(this)"></input><input id="bottom" onchange="inputWidth(this)"></input><div class="suunta_nappi"><div class="suunta_info">Pintalaudoituksen suunta</div></div><div class="koolaus_nappi"><div class="koolaus_info">Näytä runkorakenne/pintalaudoitus</div></div></div></div>');
+    $(paper).append('<div class="squareDeck deck"><div class="box1 box"><input id="left" onchange="inputHeight(this)"></input><input id="top" onchange="inputWidth(this)"></input><input id="right" onchange="inputHeight(this)"></input><input id="bottom" onchange="inputWidth(this)"></input><div class="suunta_nappi"><div class="suunta_info">Pintalaudoituksen suunta</div></div><div class="koolaus_nappi"><div class="koolaus_info">Näytä runkorakenne/pintalaudoitus</div></div><div class="mittakaavakuva"><div class="mittakaavakuva_info">Piirros auttaa hahmottamaan terassin mittakaavan. Piirroksen leveys on 1,5 m ja korkeus 0,5m.</div></div></div></div>');
 
     $(paper).find('.box').each(function() {
         $(this).addClass('lankkuVaaka');
@@ -722,7 +722,7 @@ function laskeKoolaus() {
         koolaus_vali_kkk = 0.500;
     if (pintalaudan_leveys == 0.145)
         koolaus_vali_kkk = 0.600;
-    if (pintalaudan_leveys == 0.220)
+    if (pintalaudan_leveys == 0.195)
         koolaus_vali_kkk = 0.700;
 
     koolaukset = [koolaus_vali_kkk];
@@ -1201,6 +1201,13 @@ function laskeTarvikkeet() {
     $('#palkkikengat').html(palkkikengat);
     $('#tolpat').html(tolpat);
     $('#valittupituus').html(laudanpituus);
+    $('.valittu_lauta').find('h2').eq(1).html(pintalaudan_leveys*1000 + ' mm');
+    $('.valittu_rako').find('h2').eq(1).html(pintalaudan_rako*1000 + ' mm');
+    $('.valittu_pituus').find('h2').eq(1).html(laudanpituus + ' m');
+    if (runkoratkaisu == "maa") {
+      var runko_string = "Maavarainen";
+    } else runko_string = "Perustusvarainen";
+    $('.valittu_runko').find('h2').eq(1).html(runko_string);
     var kikka = 1;
     /* HINNAT */
     kiinnikehinta = kiinnikkeet * $('#kiinnikehinta').val();
@@ -1501,7 +1508,7 @@ function piirraLankut() {
         }
         if (pintalaudan_leveys == 0.120) {
             $(this).css({
-                'background-size': '12px 12px',
+                'background-size': '9px 9px',
                 'background-image': '-webkit-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
                 'background-image': '-moz-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
                         'background-image':  '-ms-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
@@ -1511,7 +1518,7 @@ function piirraLankut() {
         }
         if (pintalaudan_leveys == 0.145) {
             $(this).css({
-                'background-size': '14px 14px',
+                'background-size': '11px 11px',
                 'background-image': '-webkit-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
                 'background-image': '-moz-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
                         'background-image':  '-ms-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
@@ -1521,7 +1528,7 @@ function piirraLankut() {
         }
         if (pintalaudan_leveys == 0.198) {
             $(this).css({
-                'background-size': '18px 18px',
+                'background-size': '15px 15px',
                 'background-image': '-webkit-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
                 'background-image': '-moz-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
                         'background-image':  '-ms-linear-gradient(left, transparent 94%, rgba(255, 255, 255, .75) 50%)',
@@ -1538,7 +1545,7 @@ function piirraLankut() {
 
 
     $(paper).find('.koolaus_nappi').css({
-        'background-image': 'url(kuvat/aktivoi_koolaus.svg)',
+        'background-image': 'url(kuvat/aktivoi_koolaus.gif)',
         'border': 'none'
     });
 }
@@ -1695,9 +1702,9 @@ function ValintaIkkunaNakyma(valinta) {
         // Kun neliönmuotoinen terassi valitaan...
         $('.SquareDeckC').on('click', function() {
             $('.valintaIkkuna').hide();
-            $('.SquareDeckC').addClass('shadow');
-            $('.tDeckC').removeClass('shadow');
-            $('.lDeckC').removeClass('shadow');
+            $('.SquareDeckC').addClass('valittu');
+            $('.tDeckC').removeClass('valittu');
+            $('.lDeckC').removeClass('valittu');
             squareDeck();
             // poistetaan koolaus_aktiivinen, jotta aloitetaan laudoitus nÃ¤kymÃ¤stÃ¤ (luultavasti haluttava kÃ¤yttÃ¤ytyminen)
             koolaus_aktiivinen = false;
@@ -1711,9 +1718,9 @@ function ValintaIkkunaNakyma(valinta) {
         // Kun L:n muotoinen terassi valitaan...
         $('.lDeckC').on('click', function() {
             $('.valintaIkkuna').hide();
-            $('.SquareDeckC').removeClass('shadow');
-            $('.tDeckC').removeClass('shadow');
-            $('.lDeckC').addClass('shadow');
+            $('.SquareDeckC').removeClass('valittu');
+            $('.tDeckC').removeClass('valittu');
+            $('.lDeckC').addClass('valittu');
             lDeck();
 
             koolaus_aktiivinen = false;
@@ -1727,9 +1734,9 @@ function ValintaIkkunaNakyma(valinta) {
         // Kun T:n muotoinen terassi valitaan...
         $('.tDeckC').on('click', function() {
             $('.valintaIkkuna').hide();
-            $('.tDeckC').addClass('shadow');
-            $('.SquareDeckC').removeClass('shadow');
-            $('.lDeckC').removeClass('shadow');
+            $('.tDeckC').addClass('valittu');
+            $('.SquareDeckC').removeClass('valittu');
+            $('.lDeckC').removeClass('valittu');
             tDeck();
 
             koolaus_aktiivinen = false;
@@ -1761,25 +1768,35 @@ function ValintaIkkunaNakyma(valinta) {
 
             // Lauta-valinnan HTML-osuus
         $('.valintaIkkuna').html('<div id="lautaModal" style=" z-index: 11111111111;" class="modal fade" role="dialog">\n\
-        <div class="modal-dialog">\n\
-              <div class="modal-content"><div class="modal-header"><h2 style="display:inline;">Terassilauta ja runko</h2><a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a></div>\n\
-<div class="modal-body"><div class="lautaValinta"><div class="vari"><strong>V&auml;ri</strong></div><div class="brown" onclick="cook(' + brown + ')" value="brown"><img src="kuvat/brown.jpg" /></div>\n\
-<div class="green" onclick="cook(' + green + ')"><img src="kuvat/green.jpg" /></div></div>\n\
-<div class="clear"></div>\n\
-<div class="laudanLeveys"><div class="valintaOtsikko laudanLeveysValinta">Laudan leveys<span id="info_kuva3"><img src="kuvat/info.gif" alt="info" /></span><div id="info_teksti3" class="info">Laudan leveys vaikuttaa laudan metrim&auml;&auml;r&auml;&auml;n.</div></div>\n\
-<div class="lauta_95 lautavalintaboksi" id="lauta_95" onclick="cook(' + 0.095 + ')" name="mitta" data-value="0.095"><img src="kuvat/95.jpg" /><div id=mitta_95 class="mitta"></div>95 cm</div>\n\
-<div class="lauta_120 lautavalintaboksi" id="lauta_120" onclick="cook(' + 0.120 + ')" name="mitta" data-value="0.120"><img src="kuvat/120.jpg" /><div id=mitta_120 class="mitta"></div>120 cm</div>\n\
-<div class="lauta_145 lautavalintaboksi" id="lauta_145" onclick="cook(' + 0.145 + ')" name="mitta" data-value="0.145"><img src="kuvat/145.jpg" /><div id=mitta_145 class="mitta"></div>145 cm</div>\n\
-<div class="lauta_95 lautavalintaboksi" id="lauta_198" onclick="cook(' + 0.198 + ')" name="mitta" data-value="0.198"><img src="kuvat/198.jpg" /><div id=mitta_198 class="mitta"></div>198 cm</div>\n\
-</div>\n\
-<div class="rako"><span class="valintaOtsikko rakoValinta">Rako</span><div id="info_kuva4"><img src="kuvat/info.gif" alt="info" /></div>\n\
-<select onchange="cook(this)" id="rako" name="rako"><option value="0.001">1 mm</option><option selected value="0.003">3 mm</option><option value="0.005">5 mm</option></select>\n\
-<div id="info_teksti4" class="info">Lautojen v&auml;liin tuleva rako. Huomioi laudan kutistuminen!</div></div>\n\
-<div class="laudanpituus"><span class="valintaOtsikko laudanPituusValinta">Laudan pituus</span>\n\
-<select onchange="cook(this)" id="pituus"><option value="3.9">3,9 m</option><option value="4.2">4,2 m</option><option value="4.5">4,5 m</option><option value="4.8">4,8 m</option><option value="5.1">5,1 m</option></select>\n\
-<div id="info_kuva2"><img src="kuvat/info.gif" alt="info" /></div><div id="info_teksti2" class="info">Laudan pituus m&auml;&auml;r&auml;&auml; lautojen kappalem&auml;&auml;r&auml;n</div></div>\n\
-<div class="runkoratkaisu"><h2><strong>Runkomalli</strong></h2><input onclick="cook( per1 )" type="radio" ' + onkoMaaChecked + ' name="runkoratkaisu" value="maa" /> Maanvarainen (asennettu esim. sorapedille)  <br />\n\
-<input onclick="cook(per2)" type="radio" ' + onkoRunkoChecked + ' name="runkoratkaisu" value="perustus" /> Perustusten varainen </div></div></div></div>');
+        <div class="modal-dialog"><div class="modal-content">\n\
+          <div class="modal-header"><h2 style="display:inline;">Terassilauta ja runko</h2><a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a></div>\n\
+          <div class="modal-body"><div class="lautaValinta">\n\
+            <div class="alert alert-info alert-dismissible notice" role="alert">Huomasitko, tarvikkeiden määrä pieneni!<button type="button" class="close" aria-label="Sulje"><span aria-hidden="true">&times;</span>\n\
+            <button type="button" data-dismiss="alert" class="alert-link dismiss-link">Älä näytä tätä enää</button></button></div>\n\
+            <div class="vari"><div class="valintaOtsikko"><h2>V&auml;ri</h2></div><div class="brown" onclick="cook(' + brown + ')" value="brown"><img src="kuvat/brown.jpg" /></div>\n\
+            <div class="green" onclick="cook(' + green + ')"><img src="kuvat/green.jpg" /></div></div>\n\
+            <div class="laudanLeveys"><div class="valintaOtsikko laudanLeveysValinta"><h2>Laudan leveys</h2><span id="info_kuva3"><img src="kuvat/info.gif" alt="info" /></span><div id="info_teksti3" class="info">Laudan leveys vaikuttaa laudan metrim&auml;&auml;r&auml;&auml;n.</div></div>\n\
+              <div class="lauta_95 lautavalintaboksi" id="lauta_95" onclick="cook(' + 0.095 + ')" name="mitta" data-value="0.095"><img src="kuvat/95.jpg" /><div id=mitta_95 class="mitta"></div>95 mm</div>\n\
+              <div class="lauta_120 lautavalintaboksi" id="lauta_120" onclick="cook(' + 0.120 + ')" name="mitta" data-value="0.120"><img src="kuvat/120.jpg" /><div id=mitta_120 class="mitta"></div>120 mm</div>\n\
+              <div class="lauta_145 lautavalintaboksi" id="lauta_145" onclick="cook(' + 0.145 + ')" name="mitta" data-value="0.145"><img src="kuvat/145.jpg" /><div id=mitta_145 class="mitta"></div>145 mm</div>\n\
+              <div class="lauta_95 lautavalintaboksi" id="lauta_198" onclick="cook(' + 0.198 + ')" name="mitta" data-value="0.198"><img src="kuvat/198.jpg" /><div id=mitta_198 class="mitta"></div>198 mm</div>\n\
+            </div>\n\
+            <div class="rako"><div class="valintaOtsikko rakoValinta"><h2>Rako</h2><span id="info_kuva4"><img src="kuvat/info.gif" alt="info" /></span><div id="info_teksti4" class="info">Lautojen v&auml;liin tuleva rako. Huomioi laudan kutistuminen!</div></div>\n\
+              <div class="rakovalintaboksi" id="rako_1" onclick="cook(' + 0.001 + ')" name="rako" data-value="0.001"><div id=mitta_1 class="mitta"></div>1 mm</div>\n\
+              <div class="rakovalintaboksi" id="rako_3" onclick="cook(' + 0.003 + ')" name="rako" data-value="0.003"><div id=mitta_3 class="mitta"></div>3 mm</div>\n\
+              <div class="rakovalintaboksi" id="rako_5" onclick="cook(' + 0.005 + ')" name="rako" data-value="0.005"><div id=mitta_5 class="mitta"></div>5 mm</div>\n\
+            </div>\n\
+            <div class="laudanpituus"><div class="valintaOtsikko laudanPituusValinta"><h2>Laudan pituus</h2>\n\
+            <div id="info_kuva2"><img src="kuvat/info.gif" alt="info" /></div><div id="info_teksti2" class="info">Laudan pituus m&auml;&auml;r&auml;&auml; lautojen kappalem&auml;&auml;r&auml;n</div></div>\n\
+            <div class="pituus_39 pituusvalintaboksi" id="pituus_39" onclick="cook(' + 3.9 + ')" name="mitta" data-value="3.9"><div id=mitta_39 class="mitta"></div>3,9 m</div>\n\
+            <div class="pituus_42 pituusvalintaboksi" id="pituus_42" onclick="cook(' + 4.2 + ')" name="mitta" data-value="4.2"><div id=mitta_42 class="mitta"></div>4,2 m</div>\n\
+            <div class="pituus_45 pituusvalintaboksi" id="pituus_45" onclick="cook(' + 4.5 + ')" name="mitta" data-value="4.5"><div id=mitta_45 class="mitta"></div>4,5 m</div>\n\
+            <div class="pituus_48 pituusvalintaboksi" id="pituus_48" onclick="cook(' + 4.8 + ')" name="mitta" data-value="4.8"><div id=mitta_48 class="mitta"></div>4,8 m</div>\n\
+            <div class="pituus_51 pituusvalintaboksi" id="pituus_51" onclick="cook(' + 5.1 + ')" name="mitta" data-value="5.1"><div id=mitta_51 class="mitta"></div>5,1 m</div>\n\
+            </div><div class="runkoratkaisu"><div><h2>Runkomalli</h2></div>\n\
+            <div class="runko_1 runkovalintaboksi" id="per_1" onclick="cook(per1)" name="runkoratkaisu" data-value="maa"><img src="kuvat/maanvarainen.png" />Maanvarainen (asennettu esim. sorapedille)</div>\n\
+            <div class="runko_2 runkovalintaboksi" id="per_2" onclick="cook(per2)" name="runkoratkaisu" data-value="perustus"><img src="kuvat/perustusvarainen.png" />Perustusten varainen</div>\n\
+            </div></div></div></div></div>');
 
         // Katsotaan, onko cookieita jo olemassa ja asetetaan arvot inputteihin
         if (getCookie("leveys") !== "") {
@@ -1798,7 +1815,10 @@ function ValintaIkkunaNakyma(valinta) {
             $("#pituus").val("4.5");
         }
 
-        $('.lautaValinta').children().css({'height': 750 * 0.7 * 0.24});
+
+        $('.close').on('click', function() {
+          $('.notice').hide();
+        });
 
         // Väri-valinnan klikkaus
         // Ruskea
@@ -1806,8 +1826,8 @@ function ValintaIkkunaNakyma(valinta) {
             lankun_vari = '#623F26';
             $('.color').find('.triangle1').css('border-color', 'white white transparent #916F3F');
             $('.piirtoAlusta').find('.colorbox').css('background', '#623F26');
-            $('.brown img').css({'border': '#623F26 solid thick', 'padding' : '0'});
-            $('.green img').css('border', 'none');
+            $('.brown').addClass('valittu');
+            $('.green').removeClass('valittu_green');
             piirraLankut();
         });
         // Vihreä
@@ -1815,8 +1835,8 @@ function ValintaIkkunaNakyma(valinta) {
             lankun_vari = '#7a8972';
             $('.color').find('.triangle1').css('border-color', 'white white transparent #E0D0A8');
             $('.piirtoAlusta').find('.colorbox').css('background', '#7a8972');
-            $('.brown img').css('border', 'none');
-            $('.green img').css('border', '#7a8972 solid thick');
+            $('.brown').removeClass('valittu');
+            $('.green').addClass('valittu_green');
             piirraLankut();
         });
 
@@ -1827,17 +1847,13 @@ function ValintaIkkunaNakyma(valinta) {
             pintalaudan_leveys = parseFloat(mittavalinta); // arvo ylÃ¶s
             $('.lautavalintaboksi').removeClass('valittu');
             $('#' + $(this).attr('id')).addClass('valittu');
-            console.log(pintalaudan_leveys);
             laskePintaLaudat(); // kÃ¤vÃ¤stÃ¤Ã¤n funktiossa laskemassa uudet pintalauda
             laskeKoolaus(); // kÃ¤vÃ¤stÃ¤Ã¤n funktiossa laskemassa uudet koolauspuut
             var vanha_lauta_maara = pintalaudat_kaytetyt_metrit;
             laskeTarvikkeet();
 
-            console.log(pintalaudat_kaytetyt_metrit);
-            console.log(vanha_lauta_maara);
-
             if (vanha_lauta_maara > pintalaudat_kaytetyt_metrit) {
-              console.log("Määrä pieneni!");
+              $('.notice').show();
             }
             //lautamaara();
             if (koolaus_aktiivinen == true)
@@ -1847,29 +1863,38 @@ function ValintaIkkunaNakyma(valinta) {
         });
 
         // Kun rako-valintaa painaa...
-        $('#rako').change(function() {
+        $('.rakovalintaboksi').on('click', function() {
             // otetaan ylÃ¶s uusi leveys ja kÃ¤ydÃ¤Ã¤n laskemalla uudet kansilaudat
-            pintalaudan_rako = parseFloat($(this).val()); // arvo ylÃ¶s
+            var mittavalinta = $(this).data('value');
+            $('.rakovalintaboksi').removeClass('valittu');
+            $('#' + $(this).attr('id')).addClass('valittu');
+
+            pintalaudan_rako = parseFloat(mittavalinta); // arvo ylÃ¶s
             laskePintaLaudat(); // kÃ¤vÃ¤stÃ¤Ã¤n funktiossa laskemassa uudet arvot
             laskeTarvikkeet();
         });
 
         // Kun pituus-valintaa painaa...
-        $('#pituus').change(function() {
+        $('.pituusvalintaboksi').on('click', function() {
             // otetaan ylÃ¶s uusi leveys ja kÃ¤ydÃ¤Ã¤n laskemalla uudet kansilaudat
-            laudanpituus = parseFloat($(this).val()); // arvo ylÃ¶s
+            console.log(laudanpituus)
+            laudanpituus = parseFloat($(this).data('value')); // arvo ylÃ¶s
+            console.log(laudanpituus)
+            $('.pituusvalintaboksi').removeClass('valittu');
+            $('#' + $(this).attr('id')).addClass('valittu');
             laskePintaLaudat(); // kÃ¤vÃ¤stÃ¤Ã¤n funktiossa laskemassa uudet pintalauda
             laskeKoolaus(); // kÃ¤vÃ¤stÃ¤Ã¤n funktiossa laskemassa uudet koolauspuut
             laskeTarvikkeet();
             if (koolaus_aktiivinen == true)
                 piirraKoolaus($(paper).find('.box'));
         });
-
         // Kun vaihdetaan runkoratkaisua
-        $('input[type=radio][name=runkoratkaisu]').change(function() {
-            runkoratkaisu = this.value; // piirraKoolaus() funktio piirtaa/ei piirra tolppia riippuen onko perustus vai maavarainen
+        $('.runkovalintaboksi').on('click', function() {
+            runkoratkaisu = $(this).data('value'); // piirraKoolaus() funktio piirtaa/ei piirra tolppia riippuen onko perustus vai maavarainen
             laskeKoolaus(); // kÃ¤vÃ¤stÃ¤Ã¤n funktiossa laskemassa uudet koolauspuut
             laskeTarvikkeet();
+            $('.runkovalintaboksi').removeClass('valittu');
+            $('#' + $(this).attr('id')).addClass('valittu');
             if (koolaus_aktiivinen == true)
                 piirraKoolaus($(paper).find('.box'));
         });
@@ -1939,11 +1964,17 @@ $(function() {
     $('#info_kuva6').hover(function() {
         $('#info_teksti6').toggle();
     });
+    $('#info_kuva9').hover(function() {
+        $('#info_teksti9').html('<img src="kuvat/' + pintalaudan_leveys*1000 + '.jpg" />');
+        $('#info_teksti9').toggle();
+    });
 
     $('.close').click(function() {
         $('.footer').hide();
     });
-
+    $('.mittakaavakuva').hover(function() {
+        $('.mittakaavakuva_info').toggle();
+    });
 
     $('.suunta_nappi').on('mouseover', function() {
         $('.suunta_info').css('display','block');

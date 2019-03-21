@@ -15,7 +15,7 @@ body, html{
     width:100%;
     height:100%;
     margin:0;
-    font-family: Arial, 'Oxygen';
+    font-family: 'Trebuchet MS', Arial, 'Oxygen';
 }
 
 #wrapper{
@@ -46,8 +46,16 @@ body, html{
 }
 
 .logo{
-    display:inline-block;
+    display:inline;
     margin: 22px 0 0 10%;
+}
+
+.logo img {
+  margin-top: 20px;
+}
+
+#slogan {
+  margin-left: 20px;
 }
 
 #content {
@@ -69,15 +77,31 @@ body, html{
     padding: 15px;
     text-align: center;
     background: #FFF;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 /* VALIKKO */
 .valikkootsikko {
     background: #8da05e;
     text-transform: uppercase;
-    margin: 0 0 10px -2%;
+    margin: 0 0 10px 0;
+    border-radius: 0 20px 20px 0;
     /*padding: 0.1px 0 1px 0;*/
-    width: 104%;
+    width: 105%;
+    -webkit-box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
+}
+
+.kolmas .valikkootsikko {
+  border-radius: 0;
+  width: 100%;
+  margin: 0 0 10px 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .valikkootsikko img {
@@ -94,18 +118,31 @@ body, html{
     cursor:pointer;
 }
 
+.openbutton {
+  cursor: pointer;
+  padding: 10px;
+  display: inline-block;
+  background: #8da05e;
+  border-radius: 30px;
+  margin:auto;
+}
+
+#info_teksti9 img {
+  max-width: 300px;
+}
+
 .ensimmainen, .toinen, .kolmas, .neljas, .viides, .kuudes{
     width:100%;
-    background:#d0d9be;
+    background: #d0d9be;
     margin-left: 30px;
     margin-top: -20px;
 }
 
-.ensimmainen, .toinen, .neljas {
+.toinen, .neljas {
   height: 60px;
 }
 
-.kolmas{
+.kolmas, .ensimmainen {
     padding-bottom: 15px;
 }
 
@@ -159,6 +196,23 @@ body, html{
     height: 45px;
 }
 
+.notice {
+  display: none;
+  top: 0;
+  margin: auto;
+  left: 25%;
+  max-width: 400px;
+  position: absolute;
+  height: auto;
+  background-color: #d0d9be;
+  color: #000;
+  border:none;
+}
+
+.dismiss-link {
+  margin-top: 10px;
+}
+
 .piirtoAlusta{
     display:inline-block;
     float:left;
@@ -183,6 +237,7 @@ body, html{
 {
     display: inline;
     cursor: pointer;
+    vertical-align: text-top;
 }/*
 #info_teksti, #info_teksti6
 {
@@ -205,7 +260,15 @@ body, html{
 {
     display: inline;
     cursor: pointer;
+
+}
+
+#info_kuva2 img, #info_kuva3 img, #info_kuva4 img, #info_kuva5 img, #info_kuva7 img
+{
+    display: inline;
+    cursor: pointer;
     margin-left: 20px;
+    vertical-align: text-top;
 }
 
 .mobile {

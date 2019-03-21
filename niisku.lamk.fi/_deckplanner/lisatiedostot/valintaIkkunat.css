@@ -2,15 +2,9 @@
 .valintaIkkuna{
 color: #615f53;
 }
-.lautaValinta > *{
-margin-top:100px;
-cursor: pointer;
-}
 /*V�rin valinta*/
 .brown,.green{
 cursor: pointer;
-margin: 0 25px 10px 30px;
-float: left;
 }
 .brown img,.green img{
 height: 120px;
@@ -25,6 +19,7 @@ margin: 15px;
 padding: 2px;
 height: 129px;
 width: 129px;
+border-radius: 3px;
 }
 
 .squareDeckC {
@@ -44,19 +39,17 @@ height: 120px;
 }
 
 /*Laudan leveys ja rako-valinnat*/
-.laudanLeveys, .runkoratkaisu, .rako, .laudanpituus, .vari{
+.laudanLeveys, .runkoratkaisu, .rako, .laudanpituus, .vari {
   font-size:14pt;
   display: table;
   margin: 0 30px 0 30px;
   padding: 5px;
 }
-.vari {
-  text-transform: uppercase;
-  margin: 20px 0 -80px 30px;
-}
-.runkoratkaisu h2 {
+.lautaValinta h2 {
     text-transform: uppercase;
-    font-size:16pt;
+    font-size:14pt;
+    display: inline;
+    font-weight: bold;
 }
 
 .runkoratkaisu {
@@ -76,12 +69,42 @@ height: 120px;
 
 #lautaModal .modal-dialog {
   width: 800px;
-  margin-right: 40px;
+  margin-left: 30%;
 }
 
 .mitta {
   border-bottom: 5px solid #623F26;
   margin: 10px auto;
+}
+
+#mitta_1 {
+  width: 5px;
+}
+#mitta_3 {
+  width: 15px;
+}
+#mitta_5 {
+  width: 25px;
+}
+
+#mitta_39 {
+  width: 54px;
+}
+
+#mitta_42 {
+  width: 57px;
+}
+
+#mitta_45 {
+  width: 60px;
+}
+
+#mitta_48 {
+  width: 63px;
+}
+
+#mitta_51 {
+  width: 66px;
 }
 
 #mitta_95 {
@@ -102,23 +125,40 @@ height: 120px;
 
 
 /* Laudan valinta */
-.lautavalintaboksi {
+.lautavalintaboksi,
+.rakovalintaboksi,
+.runkovalintaboksi,
+.pituusvalintaboksi,
+.brown,
+.green {
   cursor: pointer;
-  margin: 0 10px 10px 10px;
+  margin: 10px 10px 10px 0;
   text-align: center;
   display: inline-block;
+  -webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+  border-radius: 3px;
+  padding: 5px;
 }
-.lautavalintaboksi img {
-  height: 120px;
+.lautavalintaboksi img,
+.runkovalintaboksi img {
+  height: 100px;
   display: block;
-  max-width: 140px;
+  max-width: 130px;
+}
+
+.runkovalintaboksi {
+  max-width: 135px;
+  vertical-align: top;
 }
 
 .valittu {
-  border: thick solid #623F26;
-  margin: 6px;
+  box-shadow: 0 0 0 4pt #623F26;
 }
-
+.valittu_green {
+  box-shadow: 0 0 0 4pt #7a8972;
+}
 
 /*Select-boksit*/
 select{
@@ -196,4 +236,38 @@ margin: 15px 15px 70px 15px;
     bottom:10px;
     margin: 5px 3px 0 0;
 }
+}
+
+@media (max-width: 1150px) {
+  #lautaModal .modal-dialog {
+    margin-left: 1%;
+  }
+}
+
+@media (max-width: 800px) {
+  #lautaModal .modal-dialog {
+    width: 98%;
+  }
+  .modal-header h2 {
+    font-size: 1.5em;
+  }
+  .sulje {
+    margin:0;
+  }
+  .sulje img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 1150px) {
+  #lautaModal .modal-dialog {
+    margin-left: 30%;
+  }
+}
+
+@media (min-width: 1400px) {
+  #lautaModal .modal-dialog {
+    margin-left: 40%;
+  }
 }

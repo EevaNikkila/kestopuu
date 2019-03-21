@@ -38,15 +38,22 @@
                     <div class="menu-x"></div>
                     <div class="menu-x-2"></div>
                   </div>
-                    <div class="logo"><a href="http://www.kestopuu.fi/" target="new"><img src="kuvat/kestopuu-logo.gif" alt="Kestopuu logo"></a></div>
+                  <div class="logo"><a href="http://www.kestopuu.fi/" target="new"><img src="kuvat/Klogo_green.jpg" alt="Kestopuu logo"><img src="kuvat/Kslogan_puu.png" id="slogan" alt="Kestopuu slogan"></a></div>
                 </div>
                 <div id="content" class="row  row-no-gutters">
-
                     <div class="valikko col-md-3 col-md-offset-0 col-lg-offset-1 col-sm-3">
                       <div class="responsive-menu">
                         <div class="ensimmainen">
                             <div class="valikkootsikko lautavalintaotsikko valinta lauta" data-toggle="modal" data-target="#lautaModal">
-                                <img src="kuvat/logo_lauta2.svg" /><h1>Valitse lauta ja runko</h1>
+                              <img src="kuvat/logo_lauta2.svg" /><h1>Valitse lauta ja runko</h1>
+                            </div>
+                            <div class="tarviketiedot">
+                              <div class="valittu_lauta tiedot"><h2>Laudan leveys</h2><span id='info_kuva9'><img src="kuvat/info.gif" alt="info" /></span>
+                              <span id='info_teksti9' class="info"></span><h2>0.00 mm</h2></div>
+
+                              <div class="valittu_rako tiedot"><h2>Rako</h2><h2>0.00 mm</h2></div>
+                              <div class="valittu_pituus tiedot"><h2>Laudan pituus</h2><h2>0.00 mm</h2></div>
+                              <div class="valittu_runko tiedot"><h2>Runkomalli</h2><h2>Maavarainen</h2></div>
                             </div>
                         </div>
                         <div class="toinen">
@@ -56,8 +63,9 @@
                         </div>
                         <div class="kolmas">
                             <div class="valikkootsikko tarvikkeet">
-                                <img src="kuvat/logo_tarvike2.svg" />
-                                <h1>Tarvikkeiden määrät</h1></div>
+                              <img src="kuvat/logo_tarvike2.svg" />
+                              <h1>Tarvikkeiden määrät</h1>
+                            </div>
                             <div class="tarviketiedot">
                                 <div class="pintaala tiedot"><h2>Pinta-ala</h2><h2>0.00 m2</h2></div>
                                 <div class="metrimaara tiedot"><h2>Kansilaudan metrimäärä</h2><h2><span id="tulos">0.00 m</span></h2></div>
@@ -90,7 +98,7 @@
                         </div>
                         <div class="viides">
                             <div class="tulosta valikkootsikko esikatsele" data-toggle="modal" data-target="#myModal">
-                                <img src="kuvat/logo_print.svg"><h1>Tulosta</h1>
+                                <img src="kuvat/logo_print.svg"><h1>Tallenna</h1>
                             </div>
 
                         </div>
@@ -180,7 +188,7 @@
                         <p>Voit muuttaa terassin kokoa vet&auml;m&auml;ll&auml; terassia reunoista tai sy&ouml;tt&auml;m&auml;ll&auml; leveyden ja pituuden sy&ouml;tt&ouml;laatikoihin.
                          Valitse lauta ja runko-valikosta voit valita laudan v&auml;rin ja leveyden, lautojen v&auml;liin j&auml;&auml;v&auml;n raon, laudan pituuden sek&auml; runkoratkaisun.
                          Perustusvaraiseen runkoon tulee pystytolpat, maavaraiseen ei. Valitse terassin muoto Valitse muoto-valikosta. Tarjolla on kolme eri muotoa.
-                        Sy&ouml;t&auml; hinnat-valikosta voit laskea, kuinka paljon terassin hinnaksi tulee.</p>
+                        Sy&ouml;t&auml; hinnat-valikosta voit laskea, kuinka paljon terassin hinnaksi tulee. Laskuri toimii parhaiten Chrome-selaimella.</p>
                         <p>&copy; Kestopuuteollisuus ry. </p>
                       </div>
                     </div>
@@ -215,9 +223,9 @@
                             <div class="modal-body" style=" background: white; height: 1300px">
                                 <div id="pdf" class="container-fluid pdf" style=" background: white ">
                                     <div class="col-md-12" >
-                                        <img style="margin-top: 5px" class="pull-left" src="kuvat/kestopuu-logo.gif">
+                                        <img class="pull-left" style="height: 50px;" src="kuvat/Klogo_green.jpg">
                                     </div>
-                                    <div class="col-md-12" style="text-align: center; margin-top: 50px">
+                                    <div class="col-md-12" style="text-align: center; margin-top: 5px">
                                         <div class="col-md-12" style="padding-left: 0; margin-top: 20px">
                                             <h1 style="text-align: left; margin-top:0">TERASSIN RAKENNUSTARVIKKEET</h1>
                                         </div>
