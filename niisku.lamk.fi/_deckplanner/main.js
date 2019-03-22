@@ -176,7 +176,7 @@ function squareDeck() {
 
     aktiivinen = 's';
     $(paper).empty();
-    $(paper).append('<div class="squareDeck deck"><div class="box1 box"><input id="left" onchange="inputHeight(this)"></input><input id="top" onchange="inputWidth(this)"></input><input id="right" onchange="inputHeight(this)"></input><input id="bottom" onchange="inputWidth(this)"></input><div class="suunta_nappi"><div class="suunta_info">Pintalaudoituksen suunta</div></div><div class="koolaus_nappi"><div class="koolaus_info">Näytä runkorakenne/pintalaudoitus</div></div><div class="mittakaavakuva"><div class="mittakaavakuva_info">Piirros auttaa hahmottamaan terassin mittakaavan. Piirroksen leveys on 1,5 m ja korkeus 0,5m.</div></div></div></div>');
+    $(paper).append('<div class="squareDeck deck"><div class="box1 box"><input id="left" type="number" min="0" step="0.1" onchange="inputHeight(this)"><span class="left-metri metri">m</span></input><input id="top" type="number" min="0" step="0.1" onchange="inputWidth(this)"><span class="top-metri metri">m</span></input><input id="right" type="number" min="0" step="0.1" onchange="inputHeight(this)"><span class="right-metri metri">m</span></input><input id="bottom" type="number" min="0" step="0.1" onchange="inputWidth(this)"><span class="bottom-metri metri">m</span></input><div class="suunta_nappi"><div class="suunta_info">Pintalaudoituksen suunta</div></div><div class="koolaus_nappi"><div class="koolaus_info">Näytä runkorakenne/pintalaudoitus</div></div><div class="mittakaavakuva"><div class="mittakaavakuva_info">Piirros auttaa hahmottamaan terassin mittakaavan. Piirroksen leveys on 1,5 m ja korkeus 0,5m.</div></div></div></div>');
 
     $(paper).find('.box').each(function() {
         $(this).addClass('lankkuVaaka');
@@ -208,8 +208,8 @@ function squareDeck() {
         });
         var aw = $(sDeck)[0].getBoundingClientRect().width;
         var ah = $(sDeck)[0].getBoundingClientRect().height;
-        console.log(ah);
-        console.log(aw);
+        //console.log(ah);
+        //console.log(aw);
         var b1w = $(b1)[0].getBoundingClientRect().width;
         var b1h = $(b1)[0].getBoundingClientRect().height;
 
@@ -233,10 +233,10 @@ function squareDeck() {
         var ww = $(left).width() / 2;
         var hh = $(left).height() / 2;
 
-        $(left).attr('placeholder', ((b1h / skaalaus / 100).toFixed(inputDesimaalit) + ' m'));
-        $(top).attr('placeholder', ((b1w / skaalaus / 100).toFixed(inputDesimaalit) + ' m'));
-        $(right).attr('placeholder', ((b1h / skaalaus / 100).toFixed(inputDesimaalit) + ' m'));
-        $(bottom).attr('placeholder', ((b1w / skaalaus / 100).toFixed(inputDesimaalit) + ' m'));
+        $(left).attr('value', ((b1h / skaalaus / 100).toFixed(inputDesimaalit)));
+        $(top).attr('value', ((b1w / skaalaus / 100).toFixed(inputDesimaalit)));
+        $(right).attr('value', ((b1h / skaalaus / 100).toFixed(inputDesimaalit)));
+        $(bottom).attr('value', ((b1w / skaalaus / 100).toFixed(inputDesimaalit)));
 
         createCookie();
 
@@ -1273,7 +1273,7 @@ function inputHeight(that) {
     if ($(that).val() == '' || $(that).val() == 0)
         return; // estetÃ¤Ã¤n tyhjÃ¤ input -> muuten pituus on 0 -> sÃ¤Ã¤dettÃ¤vÃ¤ boksi katoaa
 
-    var size = $(that).val().replace(',', '.').replace('m', '');
+    var size = $(that).val().replace(',', '.');
     var newSize = size * 100 * skaalaus; // otetaan syÃ¶tetty arvo talteen
     var thatName = $(that).attr('id');
 
@@ -1291,6 +1291,7 @@ function inputHeight(that) {
     $(paper).find('.box').each(function(index) {
         bB = $(this).offset().top + $(this).height();
     });
+
 
     if (thatName == 'left' && bB > aB ||
             thatName == 'right' && bB > aB ||
@@ -1327,7 +1328,7 @@ function inputWidth(that) {
     if ($(that).val() == '' || $(that).val() == 0)
         return; // estetÃ¤Ã¤n tyhjÃ¤ input -> muuten pituus on 0 -> sÃ¤Ã¤dettÃ¤vÃ¤ boksi katoaa
 
-    var size = $(that).val().replace(',', '.').replace('m', '');
+    var size = $(that).val().replace(',', '.');
     var newSize = size * 100 * skaalaus; // otetaan syÃ¶tetty arvo talteen
     var thatName = $(that).attr('id');
 
@@ -1411,17 +1412,16 @@ function inputWidth(that) {
 // tÃ¤mÃ¤ funktio pÃ¤ivittÃ¤Ã¤ input fieldeissÃ¤ olevat arvot
 // kun kokoa on muutettu niiden avulla
 function paivitaInput(side, size) {
-
     // tarkistetaan oliko annettu arvo esim 7 vai 7.0
     // jos oli 7 -> lisÃ¤tÃ¤Ã¤n .0 perÃ¤Ã¤n
     // varmaan pelkkÃ¤ "oliko pilkku / oliko piste" tarkistus menettelee
-    if (size.indexOf('.') === -1 && size.indexOf(',')) // -> ei ollut pilkkua eikÃ¤ pistettÃ¤
-        size = size + '.0';
 
-    size = (parseFloat(size)).toFixed(inputDesimaalit);
+    size = (parseFloat(size)).toFixed(1);
+
+        console.log(size)
     // jos siinÃ¤ olikin pilkku tai piste eli oli vaikka (7.0) niin yllÃ¤ oleva ei toteutunut
     // elikkÃ¤ siinÃ¤ ei ole m-merkkiÃ¤ (se poistetaan inputWidth/inputHeight funktiossa)
-    size += ' m'; // voidaan hyvinmielen ihan vaan pistÃ¤Ã¤ se m-merkki perÃ¤Ã¤n
+// voidaan hyvinmielen ihan vaan pistÃ¤Ã¤ se m-merkki perÃ¤Ã¤n
 
     // tuo size parametri on nyt se mikÃ¤ halutaan syÃ¶ttÃ¤Ã¤ takaisin placeholderiin
 
@@ -1431,12 +1431,13 @@ function paivitaInput(side, size) {
 
     if (aktiivinen == 's') {
         if (side == 'left' || side == 'right') {
-            $(document).find('#left').attr('placeholder', size).val("").focus().blur();
-            $(document).find('#right').attr('placeholder', size).val("").focus().blur();
+
+            $('#left').val(size);
+            $('#right').val(size);
         }
         if (side == 'top' || side == 'bottom') {
-            $(document).find('#top').attr('placeholder', size).val("").focus().blur();
-            $(document).find('#bottom').attr('placeholder', size).val("").focus().blur();
+            $('#top').val(size);
+            $('#bottom').val(size);
         }
     }
     if (aktiivinen == 'l') {

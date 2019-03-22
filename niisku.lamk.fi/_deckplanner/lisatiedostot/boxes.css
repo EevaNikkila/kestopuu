@@ -109,6 +109,33 @@ color:white;
 text-shadow: 1px 1px #555555;
 border-radius:5px;
 }
+
+.metri {
+  display: inline-block;
+  position: absolute;
+  z-index: 111111111;
+}
+
+.left-metri {
+  top:calc(50% - 10px);
+  left:-37px;
+}
+
+.right-metri {
+  top:calc(50% - 10px);
+  left:calc(100% + 48px);
+}
+
+.top-metri {
+  top:-25px;
+  left:calc(50% + 8px);
+}
+
+.bottom-metri {
+  top:calc(100% + 5px);
+  left:calc(50% + 8px);
+}
+
 #left{
 top:calc(50% - 10px);
 left:-80px;

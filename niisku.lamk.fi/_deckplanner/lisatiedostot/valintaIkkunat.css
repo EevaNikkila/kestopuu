@@ -259,6 +259,20 @@ margin: 15px 15px 70px 15px;
   }
 }
 
+/* RESPONSIIVISUUS */
+@media (max-width: 1400px) {
+  .left-metri {
+    left:-25px;
+  }
+}
+
+/* RESPONSIIVISUUS */
+@media (max-width: 1175px) {
+  .left-metri {
+    left:43px;
+  }
+}
+
 @media (max-width: 800px) {
   #lautaModal .modal-dialog {
     width: 98%;
