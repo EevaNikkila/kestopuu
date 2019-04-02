@@ -1,25 +1,25 @@
 /* Pop-up ikkuna valinnoille */
 .valintaIkkuna{
-color: #615f53;
+  color: #615f53;
 }
 /*V�rin valinta*/
 .brown,.green{
-cursor: pointer;
+  cursor: pointer;
 }
 .brown img,.green img{
-height: 120px;
+  height: 120px;
 }
 
 /*Muodon valinnat*/
 .squareDeckC,.lDeckC,.tDeckC{
-cursor: pointer;
-vertical-align: middle;
-display: inline-block;
-margin: 15px;
-padding: 2px;
-height: 129px;
-width: 129px;
-border-radius: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 15px;
+  padding: 2px;
+  height: 129px;
+  width: 129px;
+  border-radius: 3px;
 }
 
 .squareDeckC {
@@ -35,7 +35,7 @@ border-radius: 3px;
 }
 
 .squareDeckC img,.lDeckC img,.tDeckC img{
-height: 120px;
+  height: 120px;
 }
 
 /*Laudan leveys ja rako-valinnat*/
@@ -46,25 +46,25 @@ height: 120px;
   padding: 5px;
 }
 .lautaValinta h2 {
-    text-transform: uppercase;
-    font-size:14pt;
-    display: inline-block;
-    font-weight: bold;
-    margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size:14pt;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .runkoratkaisu {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .kayttoohje {
-    height: 280px;
-    width: 500px;
+  height: 280px;
+  width: 500px;
 }
 
 .ohjeteksti {
-    margin-top: 100px;
-    padding: 30px;
+  margin-top: 100px;
+  padding: 30px;
 }
 
 
@@ -74,61 +74,57 @@ height: 120px;
 }
 
 .mitta {
-  border-bottom: 12px solid #623F26;
+  margin: 10px auto;
+  background-image: url('../kuvat/lauta.png');
+  height: 20px;
+}
+
+#mitta_1,
+#mitta_3,
+#mitta_5 {
+  border-bottom: 20px solid #623F26;
+  height: 20px;
   margin: 10px auto;
 }
 
 #mitta_1 {
   width: 5px;
-  border-width: 5px;
 }
 #mitta_3 {
   width: 15px;
-  border-width: 5px;
 }
 #mitta_5 {
   width: 25px;
-  border-width: 5px;
-}
-
-#mitta_39 {
-  width: 54px;
-}
-
-#mitta_42 {
-  width: 57px;
 }
 
 #mitta_45 {
-  width: 60px;
-}
-
-#mitta_48 {
-  width: 63px;
-}
-
-#mitta_51 {
-  width: 66px;
+  width: 27px;
+  height: 20px;
 }
 
 #mitta_95 {
-  width: 65px;
+  width: 57px;
+  height: 17px;
 }
 
 #mitta_120 {
-  width: 90px;
+  width: 72px;
+  height: 17px;
 }
 
 #mitta_145 {
   width: 115px;
+  height: 20px;
 }
 
 #mitta_170 {
-  width: 140px;
+  width: 102px;
+  height: 20px;
 }
 
 #mitta_198 {
-  width: 168px;
+  width: 117px;
+  height: 27px;
 }
 
 
@@ -177,23 +173,23 @@ height: 120px;
 
 /*Select-boksit*/
 select{
-display: inline;
-color:#615f53;
-padding:5px;
-font-size:14pt;
-cursor: pointer;
-float: right;
+  display: inline;
+  color:#615f53;
+  padding:5px;
+  font-size:14pt;
+  cursor: pointer;
+  float: right;
 }
 
 
 .runkoratkaisu input[type="radio"] {
-   margin: 7px;
-   cursor: pointer;
+  margin: 7px;
+  cursor: pointer;
 }
 
- /*Sulje-nappi*/
+/*Sulje-nappi*/
 .sulje {
-    float: right;
+  float: right;
 }
 
 .sulje img {
@@ -221,36 +217,36 @@ float: right;
 }
 
 .hintaotsikko {
-    font-size: 2.3vh;
-    color: #000;
+  font-size: 2.3vh;
+  color: #000;
 }
 
 .hinnat{
-    cursor:pointer;
+  cursor:pointer;
 }
 
 .ohje {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .hintatotal {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
 
 
 @media (max-width: 1200px) {
 
-/*Muodon valinnat*/
-.squareDeckC,.lDeckC,.tDeckC{
-line-height: 100px;
-margin: 15px 15px 70px 15px;
-}
+  /*Muodon valinnat*/
+  .squareDeckC,.lDeckC,.tDeckC{
+    line-height: 100px;
+    margin: 15px 15px 70px 15px;
+  }
 
-.sulje {
+  .sulje {
     right:10px;
     bottom:10px;
     margin: 5px 3px 0 0;
-}
+  }
 }
 
 @media (max-width: 1200px) {

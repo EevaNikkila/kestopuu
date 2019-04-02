@@ -766,10 +766,12 @@ function laskeKoolaus() {
             // joita on jos korkeus ylittÃ¤Ã¤ 4.5m (1 kpl) tai jos korkeus ylittÃ¤Ã¤ 9.0m (2 kpl)
             // koska pystykoolauksessa bokseissa on jo "reunapuut" on myÃ¶s lisÃ¤tukipuu kÃ¤ytÃ¤nnÃ¶ssÃ¤ "reunapuu"
             // jolloin voidaan lisÃ¤tÃ¤ se koolaus_2_vaaka_lkm muuttujaan
-            if (height >= 4.5)
+            if (height >= 3.0)
+                koolaus_1_vaaka_lkm += 1;
+            if (height >= 6.0)
                 koolaus_1_vaaka_lkm += 1; // eli lisÃ¤tÃ¤Ã¤ "reunapuu" vaikka se nyt keskellÃ¤ onkin
             if (height >= 9.0)
-                koolaus_2_vaaka_lkm += 1; // mutta eihÃ¤n se matikkaan vaikuta (samaa puutaha se kait on?)
+                koolaus_1_vaaka_lkm += 1; // mutta eihÃ¤n se matikkaan vaikuta (samaa puutaha se kait on?)
 
         }
 
@@ -796,11 +798,12 @@ function laskeKoolaus() {
             // joita on jos korkeus ylittÃ¤Ã¤ 4.5m (1 kpl) tai jos korkeus ylittÃ¤Ã¤ 9.0m (2 kpl)
             // koska pystykoolauksessa bokseissa on jo "reunapuut" on myÃ¶s lisÃ¤tukipuu kÃ¤ytÃ¤nnÃ¶ssÃ¤ "reunapuu"
             // jolloin voidaan lisÃ¤tÃ¤ se koolaus_2_vaaka_lkm muuttujaan
-            if (width >= 4.5)
-                koolaus_1_pysty_lkm += 1; // eli lisÃ¤tÃ¤Ã¤ "reunapuu" vaikka se nyt keskellÃ¤ onkin
+            if (width >= 3.0)
+                koolaus_1_pysty_lkm += 1;
+            if (width >= 6.0)
+                koolaus_2_pysty_lkm += 1; // eli lisÃ¤tÃ¤Ã¤ "reunapuu" vaikka se nyt keskellÃ¤ onkin
             if (width >= 9.0)
                 koolaus_2_pysty_lkm += 1; // mutta eihÃ¤n se matikkaan vaikuta (samaa puutaha se kait on?)
-
         }
     });
 
@@ -808,7 +811,6 @@ function laskeKoolaus() {
             koolaus_1_vaaka_lkm * koolaus_1_vaaka_pituus +
             koolaus_2_pysty_lkm * koolaus_2_pysty_pituus +
             koolaus_2_vaaka_lkm * koolaus_2_vaaka_pituus;
-
     raaka_runko_maara *= 1.12; // hukka
 
     raaka_runko_maara = (raaka_runko_maara).toFixed(1);
@@ -834,7 +836,6 @@ function piirraKoolaus(t) {
             var height = realSize($(this).height());
 
             //var koolaus_maara = Math.ceil(width / koolaus_vali);
-
             // HUOMAA ETTÃƒâ€ž koolaus_x_xxxxx_lkm sisÃ¤ltÃ¤Ã¤ myÃ¶s koolaus puun leveyden (95mm)
             if (index == 0)
                 koolaus_maara = koolaus_1_pysty_lkm;
@@ -886,7 +887,7 @@ function piirraKoolaus(t) {
             //$(this).find('.koolausPuuVaaka').eq(0).remove();
 
             // Jos menee yli 4.5 metriÃ¤ korkeudessa lisÃ¤tÃ¤Ã¤n tukipuu
-            if ($(this)[0].getBoundingClientRect().height / skaalaus / 100 > 4.5) {
+            if ($(this)[0].getBoundingClientRect().height / skaalaus / 100 > 3.0) {
                 $(this).append('<div class="liikapituus koolausPuu"></div>');
                 $(this).find('.liikapituus').css({
                     'position': 'absolute',
@@ -899,7 +900,7 @@ function piirraKoolaus(t) {
                 });
                 lisa_koolaus = 1;
             }
-            if ($(this)[0].getBoundingClientRect().height / skaalaus / 100 > 9.0) {
+            if ($(this)[0].getBoundingClientRect().height / skaalaus / 100 > 6.0) {
                 $(this).find('.liikapituus').remove();
 
                 var pos = 0.33;
@@ -914,10 +915,26 @@ function piirraKoolaus(t) {
                         'background': 'black'
                     });
                     pos += pos;
-                    lisa_koolaus = (i + 1);
+                    lisa_koolaus = (2);
                 }
             }
-
+            if ($(this)[0].getBoundingClientRect().height / skaalaus / 100 > 9.0) {
+                $(this).find('.liikapituus').remove();
+                var pos = 0.25;
+                for (var i = 0; i < 3; i++) {
+                    $(this).append('<div class="liikapituus koolausPuu"></div>');
+                    $(this).find('.liikapituus').eq(i).css({
+                        'position': 'absolute',
+                        'width': $(this).width() - 2,
+                        'height': 5,
+                        'left': 0,
+                        'top': $(this).height() * pos - 2.5,
+                        'background': 'black'
+                    });
+                    pos += 0.25;
+                    lisa_koolaus = (3);
+                }
+            }
         });
     }
     else if ($(t).hasClass('lankkuPysty')) { // ELI KOOLAUS VAAKAAN
@@ -968,7 +985,7 @@ function piirraKoolaus(t) {
             });
 
             // Jos menee yli 4.5 metriÃ¤ korkeudessa lisÃ¤tÃ¤Ã¤n tukipuu
-            if ($(this)[0].getBoundingClientRect().width / skaalaus / 100 > 4.5) {
+            if ($(this)[0].getBoundingClientRect().width / skaalaus / 100 > 3.0) {
                 $(this).append('<div class="liikapituus koolausPuu"></div>');
                 $(this).find('.liikapituus').css({
                     'position': 'absolute',
@@ -983,7 +1000,7 @@ function piirraKoolaus(t) {
                 lisapuut_pysty = 1;
                 lisapuut_vaaka = 0;
             }
-            if ($(this)[0].getBoundingClientRect().width / skaalaus / 100 > 9.0) {
+            if ($(this)[0].getBoundingClientRect().width / skaalaus / 100 > 6.0) {
                 $(this).find('.liikapituus').remove();
 
                 var pos = 0.33;
@@ -998,6 +1015,26 @@ function piirraKoolaus(t) {
                         'background': 'black'
                     });
                     pos += pos;
+                    lisa_koolaus = (i + 1);
+                    lisapuut_pysty = (i + 1);
+                    lisapuut_vaaka = 0;
+                }
+            }
+            if ($(this)[0].getBoundingClientRect().width / skaalaus / 100 > 9.0) {
+                $(this).find('.liikapituus').remove();
+
+                var pos = 0.25;
+                for (var i = 0; i < 3; i++) {
+                    $(this).append('<div class="liikapituus koolausPuu"></div>');
+                    $(this).find('.liikapituus').eq(i).css({
+                        'position': 'absolute',
+                        'width': 5,
+                        'height': $(this).height() - 2,
+                        'left': $(this).width() * pos - 2.5,
+                        'top': 0,
+                        'background': 'black'
+                    });
+                    pos += 0.25;
                     lisa_koolaus = (i + 1);
                     lisapuut_pysty = (i + 1);
                     lisapuut_vaaka = 0;
@@ -1798,9 +1835,9 @@ function ValintaIkkunaNakyma(valinta) {
               <div class="lauta_195 lautavalintaboksi" id="lauta_195" onclick="cook(' + 0.195 + ')" name="mitta" data-value="0.195"><img src="kuvat/195.jpg" /><div id=mitta_198 class="mitta"></div>195 mm</div>\n\
             </div>\n\
             <div class="rako"><div class="valintaOtsikko rakoValinta"><h2>Lautojen väli</h2><span id="info_kuva4"><img src="kuvat/info.gif" alt="info" /></span><div id="info_teksti4" class="info">Lautojen v&auml;liin tuleva rako. Huomioi laudan kutistuminen!</div></div>\n\
-              <div class="rakovalintaboksi" id="rako_1" onclick="cook(' + 0.001 + ')" name="rako" data-value="0.001"><div id=mitta_1 class="mitta"></div>1 mm</div>\n\
-              <div class="rakovalintaboksi" id="rako_3" onclick="cook(' + 0.003 + ')" name="rako" data-value="0.003"><div id=mitta_3 class="mitta"></div>3 mm</div>\n\
-              <div class="rakovalintaboksi" id="rako_5" onclick="cook(' + 0.005 + ')" name="rako" data-value="0.005"><div id=mitta_5 class="mitta"></div>5 mm</div>\n\
+              <div class="rakovalintaboksi" id="rako_1" onclick="cook(' + 0.001 + ')" name="rako" data-value="0.001"><div id=mitta_1></div>1 mm</div>\n\
+              <div class="rakovalintaboksi" id="rako_3" onclick="cook(' + 0.003 + ')" name="rako" data-value="0.003"><div id=mitta_3></div>3 mm</div>\n\
+              <div class="rakovalintaboksi" id="rako_5" onclick="cook(' + 0.005 + ')" name="rako" data-value="0.005"><div id=mitta_5></div>5 mm</div>\n\
             </div>\n\
             <div class="laudanpituus"><div class="valintaOtsikko laudanPituusValinta"><h2>Laudan pituus</h2>\n\
             <div id="info_kuva2"><img src="kuvat/info.gif" alt="info" /></div><div id="info_teksti2" class="info">Laudan pituus m&auml;&auml;r&auml;&auml; lautojen kappalem&auml;&auml;r&auml;n</div></div>\n\

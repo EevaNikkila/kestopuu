@@ -12,10 +12,10 @@ Lautavihreä: #7a8972
 
 /* YLEISET */
 body, html{
-    width:100%;
-    height:100%;
-    margin:0;
-    font-family: 'Trebuchet MS', Arial, 'Oxygen';
+  width:100%;
+  height:100%;
+  margin:0;
+  font-family: 'Trebuchet MS', Arial, 'Oxygen';
 }
 
 a {
@@ -27,24 +27,24 @@ a:hover {
 }
 
 #wrapper{
-    width:100%;
-    height:100%;
-    overflow: auto;
-    background-image: url("kuvat/tausta.jpg");
-    background-size: 100% 100%;
+  width:100%;
+  height:100%;
+  overflow: auto;
+  background-image: url("kuvat/tausta.jpg");
+  background-size: 100% 100%;
 }
 
 #content{
-    margin:30px auto 0 auto;
-    width: 100%;
+  margin:30px auto 0 auto;
+  width: 100%;
 }
 
 #topBar{
-    display: block;
-    background-color: #FFF;
-    height: 100px;
-    margin:0 auto 0 auto;
-    width: 100%;
+  display: block;
+  background-color: #FFF;
+  height: 100px;
+  margin:0 auto 0 auto;
+  width: 100%;
 }
 
 #myModal .modal-dialog {
@@ -54,8 +54,8 @@ a:hover {
 }
 
 .logo{
-    display:inline;
-    margin: 22px 0 0 11%;
+  display:inline;
+  margin: 22px 0 0 11%;
 }
 
 .logo img {
@@ -67,41 +67,41 @@ a:hover {
 }
 
 #content {
-    display:block;
-    color:white;
-    font-family: Arial;
+  display:block;
+  color:white;
+  font-family: Arial;
 }
 
 #bottomBar {
-    width: 100%;
-    height: 5%;
+  width: 100%;
+  height: 5%;
 }
 
 .logo img {
-    height: 50%;
+  height: 50%;
 }
 
 .footer {
-    padding: 15px;
-    text-align: center;
-    background: #FFF;
-    position: absolute;
-    z-index: 1111111111111;
-    width: 100%;
-    bottom: 0;
+  padding: 15px;
+  text-align: center;
+  background: #FFF;
+  position: absolute;
+  z-index: 1111111111111;
+  width: 100%;
+  bottom: 0;
 }
 
 /* VALIKKO */
 .valikkootsikko {
-    background: #8da05e;
-    text-transform: uppercase;
-    margin: 0 0 10px 0;
-    border-radius: 0 20px 20px 0;
-    /*padding: 0.1px 0 1px 0;*/
-    width: 105%;
-    -webkit-box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
-    box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
+  background: #8da05e;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  border-radius: 0 20px 20px 0;
+  /*padding: 0.1px 0 1px 0;*/
+  width: 105%;
+  -webkit-box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 8px -2px rgba(0,0,0,0.75);
 }
 
 .kolmas .valikkootsikko {
@@ -114,17 +114,17 @@ a:hover {
 }
 
 .valikkootsikko img {
-    height: 50px;
-    display: inline;
-    float: left;
+  height: 50px;
+  display: inline;
+  float: left;
 }
 
 .valikko{
-    float:left;
-    margin-right: 150px;
+  float:left;
+  margin-right: 150px;
 }
 .valinta{
-    cursor:pointer;
+  cursor:pointer;
 }
 
 .openbutton {
@@ -141,10 +141,10 @@ a:hover {
 }
 
 .ensimmainen, .toinen, .kolmas, .neljas, .viides, .kuudes{
-    width:100%;
-    background: #d0d9be;
-    margin-left: 30px;
-    margin-top: -20px;
+  width:100%;
+  background: #d0d9be;
+  margin-left: 30px;
+  margin-top: -20px;
 }
 
 .toinen, .neljas {
@@ -152,13 +152,13 @@ a:hover {
 }
 
 .kolmas, .ensimmainen {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 .kuudes{
-    padding: 15px;
-    margin-top: -10px;
-    color: #000;
+  padding: 15px;
+  margin-top: -10px;
+  color: #000;
 }
 
 .clear {
@@ -166,43 +166,43 @@ a:hover {
 }
 
 .ensimmainen h1, .toinen h1, .kolmas h1, .neljas h1, .viides h1{
-    margin-left: 45px;
-    font-size: 11pt;
-    padding: 17px;
+  margin-left: 45px;
+  font-size: 11pt;
+  padding: 17px;
 }
 .tiedot{
-    display:block;
+  display:block;
 }
 .tiedot h2{
-    display:inline-block;
-    margin:0 5px 10px 0;
-    font-size:11pt;
-    color: #000;
+  display:inline-block;
+  margin:0 5px 10px 0;
+  font-size:11pt;
+  color: #000;
 }
 .tiedot h2:first-child{
-    margin-left:15px;
-    padding-top: 5px;
+  margin-left:15px;
+  padding-top: 5px;
 }
 .tiedot h2:last-child{
-    margin: 5px 13px 0 0;
-    float:right;
+  margin: 5px 13px 0 0;
+  float:right;
 }
 
 #kplmaara_tulos {
-    float:right;
-    margin: 5px 15px 0 5px;
+  float:right;
+  margin: 5px 15px 0 5px;
 }
 
 .shadow {
-   -moz-box-shadow:    inset 0 0 15px #191926;
-   -webkit-box-shadow: inset 0 0 15px #191926;
-   box-shadow:         inset 0 0 15px #191926;
+  -moz-box-shadow:    inset 0 0 15px #191926;
+  -webkit-box-shadow: inset 0 0 15px #191926;
+  box-shadow:         inset 0 0 15px #191926;
 }
 
 
 /* MUUT */
 #tulostustaulukko tr {
-    height: 45px;
+  height: 45px;
 }
 
 .notice {
@@ -231,168 +231,174 @@ a:hover {
 }
 
 .piirtoAlusta{
-    display:inline-block;
-    float:left;
-    box-sizing: border-box;
-    background:white;
-    padding: 0;
-    margin-bottom: 20px;
+  display:inline-block;
+  float:left;
+  box-sizing: border-box;
+  background:white;
+  padding: 0;
+  margin-bottom: 20px;
 }
 
 .tulosta{
-    cursor:pointer;
+  cursor:pointer;
 }
 
-.ohje {
-    color: darkolivegreen;
-    font-weight: 600;
-    font-size: 12pt;
+.ohje,
+.linkki a {
+  color: darkolivegreen;
+  font-weight: 600;
+  font-size: 12pt;
+  line-height: 14pt;
+}
+
+.linkki, .ohje {
+  margin-bottom: 8px;
 }
 
 /* POP-UP-INFOT */
 #info_kuva, #info_kuva6
 {
-    display: inline;
-    cursor: pointer;
-    vertical-align: text-top;
-}/*
-#info_teksti, #info_teksti6
-{
-    display:none;
-    position:relative;
-    color: #000;
-    left:50px;
-    width:180px;
-    padding: 5px;
-}*/
-#info_teksti2, #info_teksti3, #info_teksti4, #info_teksti5, #info_teksti7
-{
+  display: inline;
+  cursor: pointer;
+  vertical-align: text-top;
+  }/*
+  #info_teksti, #info_teksti6
+  {
+  display:none;
+  position:relative;
+  color: #000;
+  left:50px;
+  width:180px;
+  padding: 5px;
+  }*/
+  #info_teksti2, #info_teksti3, #info_teksti4, #info_teksti5, #info_teksti7
+  {
     text-transform: none;
     margin-top: 3px;
-}
-#info_teksti7, #info_teksti5 {
-  width: 300px;
-}
-#info_kuva2, #info_kuva3, #info_kuva4, #info_kuva5, #info_kuva7
-{
+  }
+  #info_teksti7, #info_teksti5 {
+    width: 300px;
+  }
+  #info_kuva2, #info_kuva3, #info_kuva4, #info_kuva5, #info_kuva7
+  {
     display: inline;
     cursor: pointer;
 
-}
+  }
 
-#info_kuva2 img, #info_kuva3 img, #info_kuva4 img, #info_kuva5 img, #info_kuva7 img
-{
+  #info_kuva2 img, #info_kuva3 img, #info_kuva4 img, #info_kuva5 img, #info_kuva7 img
+  {
     display: inline;
     cursor: pointer;
     margin-left: 20px;
     vertical-align: text-top;
-}
+  }
 
-.mobile {
+  .mobile {
     display: none;
-}
+  }
 
-.openmenu {
+  .openmenu {
+    display: none;
+  }
+
+  /* RESPONSIIVISUUS */
+  @media (max-width: 1400px) {
+    .col-lg-offset-1 {
+      margin-left: 1.33333333%;
+    }
+    .valikko{
+      margin-right: 100px;
+    }
+    .piirtoalusta #left{
+      left: -70px;
+    }
+    .logo{
+      display:inline;
+      margin: 22px 0 0 5%;
+    }
+  }
+
+  /*@media (max-width: 1175px) and (min-width: 870px) {
+  .valikkootsikko h1{
   display: none;
 }
 
-/* RESPONSIIVISUUS */
-@media (max-width: 1400px) {
-  .col-lg-offset-1 {
-    margin-left: 1.33333333%;
-  }
-  .valikko{
-      margin-right: 100px;
-  }
-  .piirtoalusta #left{
-      left: -70px;
-  }
-  .logo{
-      display:inline;
-      margin: 22px 0 0 5%;
-  }
+.valikkootsikko img {
+display: inline;
+padding: 0;
+margin-right: 10px;
+cursor: pointer;
+border-radius: 5px;
 }
 
-/*@media (max-width: 1175px) and (min-width: 870px) {
-    .valikkootsikko h1{
-        display: none;
-    }
+.valikkootsikko {
+display: inline;
+}
 
-    .valikkootsikko img {
-        display: inline;
-        padding: 0;
-        margin-right: 10px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+.kuudes {
+display: none;
+}
 
-    .valikkootsikko {
-        display: inline;
-    }
+.valikko{
+width: 53px;
+background: #8da05e;
+margin: 0 0 50px 0;
+border-radius: 5px;
+padding: 0;
+}
 
-    .kuudes {
-        display: none;
-    }
+.valinta{
+cursor:default;
+}
 
-    .valikko{
-        width: 53px;
-        background: #8da05e;
-        margin: 0 0 50px 0;
-        border-radius: 5px;
-        padding: 0;
-    }
+.valikkootsikko img {
+margin-bottom: 5px;
+}
 
-    .valinta{
-        cursor:default;
-    }
+.valikkosisalto, .tarviketiedot {
+display: none;
+}
 
-    .valikkootsikko img {
-      margin-bottom: 5px;
-    }
+.kolmas {
+padding-bottom: 0;
+}
 
-    .valikkosisalto, .tarviketiedot {
-        display: none;
-    }
-
-    .kolmas {
-        padding-bottom: 0;
-    }
-
-    #info_kuva, #info_kuva6
+#info_kuva, #info_kuva6
 {
-    margin-right: 20px;
+margin-right: 20px;
 }
 
-    .tarvikkeet {
-        display: inline!important;
-    }
+.tarvikkeet {
+display: inline!important;
+}
 
-    .kolmas, .ensimmainen, .toinen, .neljas, .viides{
-        height: 0px;
-        margin: 0;
-    }
+.kolmas, .ensimmainen, .toinen, .neljas, .viides{
+height: 0px;
+margin: 0;
+}
 
-    .piirtoalusta{
-        margin-left: 10%;
-    }
-    .tulosta{
-        margin-left: 20%;
-    }
-    .englanti{
-        margin-right: 0;
-    }
+.piirtoalusta{
+margin-left: 10%;
+}
+.tulosta{
+margin-left: 20%;
+}
+.englanti{
+margin-right: 0;
+}
 
-    .mobile {
-        display: inline;
-    }
+.mobile {
+display: inline;
+}
 
-    .mobile img {
-        float:right;
-        cursor: pointer;
-    }
-    .piirtoalusta #left {
-    left: -70px;
-    }
+.mobile img {
+float:right;
+cursor: pointer;
+}
+.piirtoalusta #left {
+left: -70px;
+}
 }*/
 
 @media (max-width: 1175px) and (min-width: 1050px) {
@@ -401,16 +407,15 @@ a:hover {
     padding-left: 0;
     left: 0;
     margin-left: 0;
-
     margin-right: 10px;
   }
 
   .piirtoalusta #left {
-  left: 0px;
-}
-.left-metri {
-  left:0px;
-}
+    left: 0px;
+  }
+  .left-metri {
+    left:0px;
+  }
   .col-lg-offset-1 {
     margin-left: 0;
   }
@@ -425,9 +430,9 @@ a:hover {
 @media (max-width: 1115px) {
 
 
-    #myModal .modal-dialog {
-      width:90%;
-    }
+  #myModal .modal-dialog {
+    width:90%;
+  }
 
   .menu_open {
     display: block;
@@ -485,21 +490,21 @@ a:hover {
     height: 5px;
   }
   .piirtoalusta #left {
-  left: 0px;
-}
-.left-metri {
-  left:0px;
-}
-.piirtoalusta{
+    left: 0px;
+  }
+  .left-metri {
+    left:0px;
+  }
+  .piirtoalusta{
     margin-left: 10px;
-}
+  }
 }
 
 @media (max-width: 766px) {
-    #topBar{
-        width: 850px;
-    }
-    .piirtoalusta{
-        margin-left: 10px;
-    }
+  #topBar{
+    width: 850px;
+  }
+  .piirtoalusta{
+    margin-left: 10px;
+  }
 }
