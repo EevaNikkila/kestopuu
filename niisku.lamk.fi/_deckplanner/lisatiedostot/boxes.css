@@ -113,7 +113,7 @@ border-radius:5px;
 .metri {
   display: inline-block;
   position: absolute;
-  z-index: 111111111;
+  z-index: 1111111;
 }
 
 .left-metri {

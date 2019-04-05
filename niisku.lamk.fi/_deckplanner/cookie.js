@@ -1,36 +1,55 @@
 //Ilmoittaa cookiesta
 $( document ).ready(function() {
     if(getCookie("cookieInfo") !=="chekked"){
-        $(".footer").slideDown(500);  
+        $(".footer").slideDown(500);
         $("#closeCookie").click(function(){
-            $(".footer").slideUp(500);  
+            $(".footer").slideUp(500);
             document.cookie = "cookieInfo=chekked";
         });
+    } else {
+      $(".footer").hide();
     }
 });
 
 //tallentaa arvoja cookieihin
 function cook(ele){
-    //laudan väri
-    if(ele === "brown" || ele === "green"){
+    //laudan vï¿½ri
+  //  console.log(ele)
+    switch (ele) {
+      case "brown":
+      case "green":
         document.cookie="color="+  ele;
-        
-    }else{
-        //runkoratkaisu
-    if(ele === "maa" || ele === "perustus"){
+        break;
+      case "perustus":
+      case "maa":
         document.cookie="runkoratkaisu="+  ele;
-        
-    }else{
+        break;
+      default:
+        var name = ele.id;
+        if (ele.type == "number") {
+          var hinta = $("#"+name+"").val();
+          document.cookie=""+name+"="+hinta;
+        } else {
+          var value = ele.attributes.name;
+        //  console.log(ele.dataset.value)
+        //  console.log(ele.title)
+          document.cookie=""+ele.title+"="+ele.dataset.value;
+        }
+        break;
+    }
+    /*if () {
         // muut
         var name= ele.id;
+        console.log(name)
+        console.log(ele)
         var hinta = $("#"+name+"").val();
+        console.log(hinta)
         document.cookie=""+name+"="+hinta;
-    }
-    
-} 
+    }*/
+
 }
 
-//hakee cookien nimellä
+//hakee cookien nimellï¿½
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -40,5 +59,4 @@ function getCookie(cname) {
         if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
     }
     return "";
-} 
-
+}

@@ -12,13 +12,13 @@
         <script type="text/javascript" src="lisatiedostot/cookie.js"></script>
         <script type="text/javascript" src="main.js"></script>
         <script type="text/javascript" src="cookie.js"></script>
-        <script src="js/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
         <!-- 26042018 MW ylla olevasta rivista poistettu kommentti ja lisatty se allaolevaan seka jspdf.min.js paivitetty ./js hakemistoon -->
         <!-- <script src="//mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script> -->
         <script type="text/javascript" src="js/html2canvas.min.js"></script>
-        <link rel="stylesheet" href="../../code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <script src="../../code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="../../code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="lisatiedostot/boxes.css">
@@ -108,7 +108,7 @@
                               Katso lisää vinkkejä & ideoita rakentamiseen
                             </a>
                           </div>
-                          <div class="valinta ohje"  data-toggle="modal" data-target="#ohjeModal">Käyttöohje</div>
+                          <div class="ohje"  data-toggle="modal" data-target="#ohjeModal">Käyttöohje</div>
                           <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.kestopuu.fi%2Fterassilaskuri&layout=button&size=large&mobile_iframe=true&width=73&height=28&appId" width="73" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                         </div>
                     </div>
@@ -197,7 +197,7 @@
                         <p>Voit muuttaa terassin kokoa vet&auml;m&auml;ll&auml; terassia reunoista tai sy&ouml;tt&auml;m&auml;ll&auml; leveyden ja pituuden sy&ouml;tt&ouml;laatikoihin.
                          Valitse lauta ja runko-valikosta voit valita laudan v&auml;rin ja leveyden, lautojen v&auml;liin j&auml;&auml;v&auml;n raon, laudan pituuden sek&auml; runkoratkaisun.
                          Perustusvaraiseen runkoon tulee pystytolpat, maavaraiseen ei. Valitse terassin muoto Valitse muoto-valikosta. Tarjolla on kolme eri muotoa.
-                        Sy&ouml;t&auml; hinnat-valikosta voit laskea, kuinka paljon terassin hinnaksi tulee. Laskuri toimii parhaiten Chrome-selaimella.</p>
+                        Sy&ouml;t&auml; hinnat-valikosta voit laskea, kuinka paljon terassin hinnaksi tulee.</p>
                         <p>&copy; Kestopuuteollisuus ry. </p>
                       </div>
                     </div>
@@ -230,7 +230,7 @@
 
                             </div>
                             <div class="modal-body" style=" background: white; height: 1300px">
-                                <div id="pdf" class="container-fluid pdf" style=" background: white ">
+                                <div id="pdf" class="container-fluid pdf" style="background: white; max-width: 1000">
                                     <div class="col-md-12" >
                                         <img class="pull-left" style="height: 50px;" src="kuvat/Klogo_green.jpg">
                                     </div>
@@ -276,7 +276,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="col-md-6" style=" margin-top: 20px">
+                                        <div class="col-md-6" style=" margin-top: 20px; max-width:400px">
                                             <img  class="img-responsive" src="kuvat/terassi.jpg">
                                         </div>
                                     </div>
@@ -314,12 +314,18 @@
 
             function decplanner_pdf() {
                 var pdf = new jsPDF('p', 'pt');
-                /* pdf.internal.scaleFactor = 1.2; */
+                 //pdf.internal.scaleFactor = 1.3;
 
                 pdf.addHTML($('.pdf')[0], function() {
-                    pdf.save('Terassisuunnitelma.html');
+                    pdf.save('Terassisuunnitelma.pdf');
 
                 });
+
+          /*      var pdf = new jsPDF('l', 'in', 'a4');
+        pdf.internal.scaleFactor = 30;
+        pdf.addHTML($('#print-area')[0], function () {
+            pdf.save(calendarName);
+        });*/
 
             }
 
