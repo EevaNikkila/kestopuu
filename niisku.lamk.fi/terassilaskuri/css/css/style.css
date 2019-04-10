@@ -1,0 +1,31 @@
+/*
+    Basic components
+*/
+body {
+    font-family: Helvetica;
+}
+
+/*
+    Classes
+*/
+
+// Header 
+.header {
+    display: block;
+    text-align: center;
+}
+
+// Menu
+.menu input {
+    margin: 0 10px 0 10px;
+}
+
+.menu ul {
+    list-style-type: none;
+}
+
+.menu li {
+    margin: 10px 0 10px 0;
+}
+    
+// Draw

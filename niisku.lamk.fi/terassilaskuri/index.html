@@ -1,0 +1,336 @@
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Lahden ammattikorkeakoulu">
+        <meta name="keywords" content="terassilaskuri, kestopuu, terassin suunnittelu">
+        <meta name="description" property="og:description" content="Haaveiletko terassista? Kestopuun terassilaskurilla selvität hetkessä paljonko tarvitset terassilautaa & ruuveja projektiisi!">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <script type="text/javascript" src="js.js"></script>
+        <script type="text/javascript" src="lisatiedostot/resize.js"></script>
+        <script type="text/javascript" src="lisatiedostot/cookie.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="cookie.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+        <!-- 26042018 MW ylla olevasta rivista poistettu kommentti ja lisatty se allaolevaan seka jspdf.min.js paivitetty ./js hakemistoon -->
+        <!-- <script src="//mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script> -->
+        <script type="text/javascript" src="js/html2canvas.min.js"></script>
+        <link rel="stylesheet" href="code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="lisatiedostot/boxes.css">
+        <link rel="stylesheet" type="text/css" href="lisatiedostot/valintaIkkunat.css">
+        <title>Kestopuun terassilaskuri</title>
+    </head>
+    <body>
+        <div id="kestopuu">
+
+            <div id="wrapper">
+                <div id="topBar">
+                  <div class="openmenu">
+                    <div class="hmp-palkki"></div>
+                    <div class="hmp-palkki"></div>
+                    <div class="hmp-palkki"></div>
+
+                    <div class="menu-x"></div>
+                    <div class="menu-x-2"></div>
+                  </div>
+                  <div class="logo"><a href="http://www.kestopuu.fi/" target="new"><img src="kuvat/Klogo_green.jpg" alt="Kestopuu logo"><img src="kuvat/Kslogan_puu.png" id="slogan" alt="Kestopuu slogan"></a></div>
+                </div>
+                <div id="content" class="row  row-no-gutters">
+                    <div class="valikko col-md-3 col-md-offset-0 col-lg-offset-1 col-sm-3">
+                      <div class="responsive-menu">
+                        <div class="ensimmainen">
+                            <div class="valikkootsikko lautavalintaotsikko valinta lauta" data-toggle="modal" data-target="#lautaModal">
+                              <img src="kuvat/logo_lauta2.svg" /><h1>Valitse lauta ja runko</h1>
+                            </div>
+                            <div class="tarviketiedot">
+                              <div class="valittu_lauta tiedot"><h2>Laudan leveys</h2><span id='info_kuva9'><img src="kuvat/info.gif" alt="info" /></span>
+                              <span id='info_teksti9' class="info"></span><h2>0.00 mm</h2></div>
+
+                              <div class="valittu_rako tiedot"><h2>Lautojen väli</h2><h2>0.00 mm</h2></div>
+                              <div class="valittu_pituus tiedot"><h2>Laudan pituus</h2><h2>0.00 mm</h2></div>
+                              <div class="valittu_runko tiedot"><h2>Runkomalli</h2><h2>Maavarainen</h2></div>
+                            </div>
+                        </div>
+                        <div class="toinen">
+                            <div class="valikkootsikko muotovalintaotsikko valinta muoto" data-toggle="modal" data-target="#muotoModal">
+                                <img src="kuvat/logo_muoto2.svg" /><h1>Valitse muoto</h1>
+                            </div>
+                        </div>
+                        <div class="kolmas">
+                            <div class="valikkootsikko tarvikkeet">
+                              <img src="kuvat/logo_tarvike2.svg" />
+                              <h1>Tarvikkeiden määrät</h1>
+                            </div>
+                            <div class="tarviketiedot">
+                                <div class="pintaala tiedot"><h2>Pinta-ala</h2><h2>0.00 m2</h2></div>
+                                <div class="metrimaara tiedot"><h2>Kansilaudan metrimäärä</h2><h2><span id="tulos">0.00 m</span></h2></div>
+                                <div class="kplmaara tiedot"><h2>Kansilaudan kappalemäärä</h2>
+                                    <div id='info_kuva'><img src="kuvat/info.gif" alt="info" /></div>
+                                    <h2 id="kplmaara_tulos">0</h2>
+                                    <div id='info_teksti' class="info">Lautojen määrä lasketaan valitun laudan pituuden mukaan. Määrään on laskettu lisäksi 12% hukkaa.</div>
+                                </div>
+                                <div class="pituusehdotus tiedot"><h2>Ehdotettu laudan pituus</h2>
+                                    <h2 id="pituusehdotus">0</h2>
+                                </div>
+                                <div class="runko tiedot"><h2>Rungon metrimäärä</h2><h2>0</h2></div>
+
+                                <div class="tiedot palkkikengat"><h2>Palkkikengät</h2><h2 id="palkkikengat">0</h2></div>
+                                <div class="tiedot tolpat"><h2>Tolpat</h2><h2 id="tolpat">0</h2></div>
+                                <div class="tiedot ruuvit"><h2>Kansilaudan ruuvit</h2><h2 id="pintalautakiinnikkeet">0</h2></div>
+                                <div class="tiedot ruuvit"><h2>Runkorakenteen ruuvit</h2>
+                                    <div id='info_kuva6'><img src="kuvat/info.gif" alt="info" /></div>
+                                    <h2 id="runkokiinnikkeet" style="float:right; margin: 5px 13px 0 0;">0</h2>
+                                    <div id='info_teksti6' class="info">Runkorakenteen ruuveihin kuuluvat palkkikenk&auml;ruuvit (8 kpl / palkkikenk&auml;) sek&auml;
+                                        ulkokeh&auml;n ruuvit</div>
+                                </div>
+                                <div class="mobile"><img src="kuvat/logo_exit.svg" height="40" alt="sulje" /></div>
+                            </div>
+                        </div>
+                        <div class="neljas">
+                            <div class="valikkootsikko hintavalintaotsikko valinta hinnat" data-toggle="modal" data-target="#hintaModal">
+                                <img src="kuvat/logo_hinta2.svg" />
+                                <h1>Syötä hinnat</h1></div>
+                        </div>
+                        <div class="viides">
+                            <div class="tulosta valikkootsikko esikatsele" data-toggle="modal" data-target="#myModal">
+                                <img src="kuvat/logo_print.svg"><h1>Tallenna</h1>
+                            </div>
+
+                        </div>
+                        <div class="kuudes">
+                          <div class="linkki">
+                            <a target="_blank" href="https://www.kestopuu.fi/piharakentaminen/">
+                              Katso lisää vinkkejä & ideoita rakentamiseen
+                            </a>
+                          </div>
+                          <div class="ohje"  data-toggle="modal" data-target="#ohjeModal">Käyttöohje</div>
+                          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.kestopuu.fi%2Fterassilaskuri&layout=button&size=large&mobile_iframe=true&width=73&height=28&appId" width="73" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                        </div>
+                    </div>
+                  </div>
+                    <div class="piirtoAlusta col-md-8  col-sm-8"></div>
+                    <div class="valintaIkkuna">
+                    </div>
+
+                </div>
+                <div id="bottomBar"></div>
+                <div id="hintaModal" style=" z-index: 11111111111;" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 style="display:inline;">Syötä hinnat</h2><a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a>
+
+                      </div>
+                      <div class="modal-body hintatiedot">
+                        <div class="hinnat_info">
+                          <p>Hinnat löydät jälleenmyyjien sivuilta. <a href="https://www.kestopuu.fi/kestopuun-myyntipisteet/" target="_blank">Kestopuun myyntipisteet</a>
+                        </div>
+                        <div class="tiedot2 row lautahinta">
+                          <div class="col-xs-6">
+                            Kansilaudan metrihinta
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" type="number" min="0" id="lautahinta" />
+                          </div>
+                        </div>
+                        <div class="tiedot2 row runkohinta">
+                          <div class="col-xs-6">
+                            Rungon metrihinta
+                              <span id="info_kuva7"><img src="kuvat/info.gif" alt="info" /></span>
+                              <span id="info_teksti7" class="info">Valitse runkoon Kestopuu A-luokka 48 x 123 mm tai 48 x 148 mm lauta</span>
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" type="number" min="0" id="runkohinta" />
+                          </div>
+                        </div>
+                        <div class="tiedot2 palkkikenkahinta row">
+                          <div class="col-xs-6">
+                            Palkkikenkien hinta
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" type="number" min="0" id="palkkikenkahinta" />
+                          </div>
+                        </div>
+                        <div class="tiedot2 ruuvihinta row">
+                          <div class="col-xs-6">
+                            Kansilautaruuvien yhteishinta<span id="info_kuva5"><img src="kuvat/info.gif" alt="info" /></span>
+                            <span id="info_teksti5" class="info">Sy&ouml;t&auml; tarvittavien rst-ruuvipakettien yhteishinta</span>
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" step="1" min="0" type="number" id="plkiinnikehinta" />
+                          </div>
+                        </div>
+                        <div class="tiedot2 ruuvihinta row">
+                          <div class="col-xs-6">
+                            Runkorakenteen ruuvien yhteishinta
+                          </div>
+                          <div class="col-xs-6">
+                            <input onchange="cook(this)" step="1" min="0" type="number" id="pkkiinnikehinta" />
+                          </div>
+                        </div>
+                        <h2>Kokonaishinnat:</h2>
+                        <div class="tiedot lautahintatotal"><h2>Kansilaudat</h2><h2><span id="lautahintatulos"></span></h2></div>
+                        <div class="tiedot lautaneliohintatotal"><h2>Kansilaudan neliöhinta</h2><h2><span id="lautahintaneliotulos"></span></h2></div>
+                        <div class="tiedot runkohintatotal"><h2>Runkolaudat</h2><h2><span id="runkohintatulos"></span></h2></div>
+                        <div class="tiedot palkkikenkahintatotal"><h2>Palkkikeng&auml;t</h2><h2><span id="palkkikenkahintatulos"></span></h2></div>
+                        <div class="tiedot ruuvihintatotal"><h2>Kansilaudan ruuvit</h2><h2><span id="plkiinnikehintatulos"></span></h2></div>
+                        <div class="tiedot ruuvihintatotal"><h2>Runkorakenteen ruuvit</h2><h2><span id="pkkiinnikehintatulos"></span></h2></div>
+                        <hr />
+                        <div class="tiedot hintatotal"><h2>Yhteishinta</h2><h2><span id="yhteishinta"></span></h2></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="ohjeModal" style=" z-index: 11111111111;" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 style="display:inline;">K&auml;ytt&ouml;ohje</h2>
+                        <a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a>
+                      </div>
+                      <div class="modal-body">
+                        <p>Voit muuttaa terassin kokoa vet&auml;m&auml;ll&auml; terassia reunoista tai sy&ouml;tt&auml;m&auml;ll&auml; leveyden ja pituuden sy&ouml;tt&ouml;laatikoihin.
+                         Valitse lauta ja runko-valikosta voit valita laudan v&auml;rin ja leveyden, lautojen v&auml;liin j&auml;&auml;v&auml;n raon, laudan pituuden sek&auml; runkoratkaisun.
+                         Perustusvaraiseen runkoon tulee pystytolpat, maavaraiseen ei. Valitse terassin muoto Valitse muoto-valikosta. Tarjolla on kolme eri muotoa.
+                        Sy&ouml;t&auml; hinnat-valikosta voit laskea, kuinka paljon terassin hinnaksi tulee.</p>
+                        <p>&copy; Kestopuuteollisuus ry. </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="muotoModal" style=" z-index: 11111111111;" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 style="display:inline;">Valitse muoto</h2>
+                        <a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a>
+                      </div>
+                      <div class="modal-body">
+                          <div class="SquareDeckC"></div>
+                          <div class="lDeckC"></div>
+                          <div class="tDeckC"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="myModal" class="modal fade" role="dialog" style=" z-index: 1111111111111; ">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content" >
+                            <div class="modal-header" >
+                                <a href="javascript:decplanner_pdf()" style="font-size: 20px; color: #8da05e; font-weight: bold">Tallenna (PDF)</a>
+
+                                <a class="sulje" data-dismiss="modal"><img src="kuvat/logo_exit.svg" alt="sulje" /></a>
+
+                            </div>
+                            <div class="modal-body" style=" background: white; height: 1300px">
+                                <div id="pdf" class="container-fluid pdf" style="background: white; max-width: 1000">
+                                    <div class="col-md-12" >
+                                        <img class="pull-left" style="height: 50px;" src="kuvat/Klogo_green.jpg">
+                                    </div>
+                                    <div class="col-md-12" style="text-align: center; margin-top: 5px">
+                                        <div class="col-md-12" style="padding-left: 0; margin-top: 20px">
+                                            <h1 style="text-align: left; margin-top:0">TERASSIN RAKENNUSTARVIKKEET</h1>
+                                        </div>
+                                        <div class="col-md-6" style="padding-left: 0; margin-top: 20px">
+                                            <table id="tulostustaulukko" class="table" style="text-align: left; width: 100%; height: 300px;">
+                                                <tbody  >
+                                                    <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                                                        <td  >Pinta-ala</td>
+                                                        <td  style="text-align: right;" id="pintaalaPdf"></td>
+                                                    </tr>
+                                                    <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                                                        <td>Kansilaudan metrimäärä</td>
+                                                        <td id="metrimaaraPdf" style="text-align: right;"></td>
+                                                    </tr>
+                                                    <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                                                        <td>Kansilaudan kappalemäärä</td>
+                                                        <td id="kplPdf" style=";text-align: right;"></td>
+                                                    </tr>
+                                                    <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                                                        <td>Kansilaudan leveys</td>
+                                                        <td id="leveysPdf" style="text-align: right;">100</td>
+                                                    </tr>
+                                                    <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                                                        <td>Runkotavaran metrimäärä</td>
+                                                        <td id="runkoPdf" style="text-align: right;">100</td>
+                                                    </tr>
+                                                    <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                                                        <td>Palkkikeng&auml;t</td>
+                                                        <td id="palkkikengatPdf" style="text-align: right;">100</td>
+                                                    </tr>
+                                                    <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                                                        <td>Kansilaudan ruuvit</td>
+                                                        <td id="plkiinnikehintaPdf" style="text-align: right;"></td>
+                                                    </tr>
+                                                    <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                                                        <td>Runkorakenteen ruuvit</td>
+                                                        <td id="pkkiinnikehintaPdf" style="text-align: right;"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-6" style=" margin-top: 20px; max-width:400px">
+                                            <img  class="img-responsive" src="kuvat/terassi.jpg">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="text-align: left;background: white; padding-bottom: 0; margin-bottom: 0 ">
+                                        <p style="margin-top: 20px; background: white; padding-bottom: 0; font-size: 17px;">Huomioithan, että tämä laskelma on tarkoitettu kestopuuterassiin tarvittavan puutavaramäärän selvittämiseksi.
+                                        Terassin tarvikelaskelma on viitteellinen. Rakennusvaiheessa tarvittava puutavaran ja kiinnikkeiden määrä voivat erota laskelman antamasta luvusta, siksi tarkka materiaalimenekki tulee tarkistaa tapauskohtaisesti. Tässä laskelmassa on laudan määrään laskettu lisäksi 12% hukkaa. Ruuveihin ei ole laskettu hukkaa, joten se kannattaa ottaa huomioon ruuveja hankittaessa.
+
+                                        </p>
+                                        <h3>Vinkki rakentamiseen:</h3>
+                                        <p style="margin-top: 20px; background: white; padding-bottom: 0; font-size: 17px;">
+                                          Kyllästetty puu on usein rakentamisvaiheessa kosteaa, ja terassilaudat kapenevat kuivuessaan kesän mittaan. Tämän vuoksi terassin kansilaudat kannattaa kiinnittää tiiviisti, vain n. 3mm välein. Muutoin lautojen välit kasvavat liian suuriksi, mikä heikentää terassin käyttömukavuutta.
+                                          Ohjeita kestopuusta tehdyn terassin
+                                          <a href="https://www.kestopuu.fi/piharakentaminen/terassin-perustusohje.html" target="_blank">perustamiseen</a>,
+                                          <a href="https://www.kestopuu.fi/piharakentaminen/terassin-suunnittelu-ja-mitoitus.html" target="_blank">terassin suunnitteluun ja mitoitukseen</a> sekä
+                                          <a href="https://www.kestopuu.fi/piharakentaminen/terassin-rakentaminen.html" target="_blank">terassin rakentamiseen</a>
+                                          löydät osoitteesta www.kestopuu.fi, kohdasta  <a href="https://www.kestopuu.fi/rakentaminen/rakentamisoppaat.html" target="_blank">rakentamisoppaat</a>.
+                                        </p>
+                                        <p style="margin-top: 20px; background: white; padding-bottom: 0; font-size: 17px;"><a href="https://www.kestopuu.fi/kestopuun-myyntipisteet/" target="_blank">Katso lähin jälleenmyyjä & parhaimmat tarjoukset www.kestopuu.fi/kestopuun-myyntipisteet/</a></p>
+                                        <h3>Auta kaveria ja vinkkaa terassilaskurista</h3>
+                                        <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.kestopuu.fi%2Fterassilaskuri&layout=button&size=large&mobile_iframe=true&width=73&height=28&appId" width="73" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">Voidaksemme tarjota paremman käyttökokemuksen,
+                    käytämme tässä verkkopalvelussa evästeitä. Jatkamalla hyväksyt evästeiden käytön.
+                    <button id="closeCookie" class="close" style="color: black; opacity:.8" >&times;</button></div>
+            </div>
+            </div>
+        <script type="text/javascript">
+
+            function decplanner_pdf() {
+                var pdf = new jsPDF('p', 'pt');
+                 //pdf.internal.scaleFactor = 1.3;
+
+                pdf.addHTML($('.pdf')[0], function() {
+                    pdf.save('Terassisuunnitelma.pdf');
+
+                });
+
+          /*      var pdf = new jsPDF('l', 'in', 'a4');
+        pdf.internal.scaleFactor = 30;
+        pdf.addHTML($('#print-area')[0], function () {
+            pdf.save(calendarName);
+        });*/
+
+            }
+
+
+        </script>
+    </body>
+
+</html>
